@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative overflow-hidden bg-black pb-20">
+    <section id="overview" className="relative overflow-hidden bg-black pb-20">
       {/* Animated Light Rays Background */}
       <div className="absolute inset-0 z-0">
         <LightRays
