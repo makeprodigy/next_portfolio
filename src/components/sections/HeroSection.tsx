@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative overflow-hidden bg-black">
+    <section id="home" className="relative overflow-hidden bg-black pb-20">
       {/* Animated Light Rays Background */}
       <div className="absolute inset-0 z-0">
         <LightRays
@@ -17,7 +17,7 @@ export default function HeroSection() {
           raysColor="#ffffff"
           raysSpeed={1.5}
           lightSpread={0.8}
-          rayLength={5.0}
+          rayLength={2.0}
           followMouse={true}
           mouseInfluence={0.1}
           noiseAmount={0.1}
