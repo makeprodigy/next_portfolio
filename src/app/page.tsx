@@ -11,7 +11,7 @@ import ScrollTracker from '@/components/ui/ScrollTracker';
 
 export default function Home() {
   const sections = [
-    { id: 'home', label: 'Home' },
+    { id: 'overview', label: 'Overview' },
     { id: 'about', label: 'About' },
     { id: 'education', label: 'Education' },
     { id: 'work-experience', label: 'Experience' },
