@@ -89,7 +89,7 @@ const ScrollTracker: React.FC<ScrollTrackerProps> = ({ sections }) => {
               >
                 <span
                   className={`
-                    text-sm transition-all duration-300 text-right min-w-[100px]
+                    text-base transition-all duration-300 text-right min-w-[100px]
                     ${
                       isActive
                         ? 'text-white font-bold'
