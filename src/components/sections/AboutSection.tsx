@@ -2,6 +2,7 @@
 
 import AnimatedContent from '@/components/ui/AnimatedContent';
 import PixelCard from '@/components/ui/PixelCard';
+import CountUp from '@/components/ui/CountUp';
 import Image from 'next/image';
 import { DottedGlowBackground } from '@/components/ui/dotted-glow-background';
 
@@ -39,11 +40,11 @@ export default function AboutSection() {
             </h2>
             <div className="space-y-6">
               <p className="text-lg text-gray-300 leading-relaxed font-semibold">
-                I'm a passionate <span className="text-white font-black text-xl">Full-stack Developer</span> experienced in building <span className="text-blue-400 font-bold">responsive, user-centric web applications</span>. I love creating elegant solutions to complex problems and bringing ideas to life through code.
+                I'm a <span className="text-white font-black text-xl">Full-stack Developer</span> experienced in building <span className="text-blue-400 font-bold">responsive, user-centric web applications</span>. I love creating elegant solutions to complex problems and bringing ideas to life through code.
               </p>
               
               <p className="text-lg text-gray-300 leading-relaxed font-semibold">
-                With expertise in <span className="text-white font-black text-xl">JavaScript/TypeScript</span>, <span className="text-white font-black text-xl">React</span>, and modern <span className="text-white font-black text-xl">CSS</span>, I specialize in crafting seamless frontend experiences. On the backend, I'm proficient in <span className="text-white font-black text-xl">Node.js</span>, <span className="text-white font-black text-xl">Express</span>, <span className="text-white font-black text-xl">Python</span>, and both <span className="text-white font-black text-xl">SQL/MySQL</span> and <span className="text-white font-black text-xl">NoSQL/MongoDB</span> databases, with a strong foundation in <span className="text-blue-400 font-bold">data structures and algorithms</span>.
+                With expertise in <span className="text-white font-black text-xl">TypeScript/JavaScript</span>, <span className="text-white font-black text-xl">Next.js, React</span>, and modern <span className="text-white font-black text-xl">CSS</span>, I craft seamless frontend experiences and I'm proficient in <span className="text-white font-black text-xl">Node.js</span>, <span className="text-white font-black text-xl">Express</span>, <span className="text-white font-black text-xl">Python</span>, and both <span className="text-white font-black text-xl">SQL/MySQL</span> and <span className="text-white font-black text-xl">NoSQL/MongoDB</span> databases, with a strong foundation in <span className="text-blue-400 font-bold">data structures and algorithms</span>.
               </p>
 
               <p className="text-lg text-gray-300 leading-relaxed font-semibold">
@@ -58,7 +59,7 @@ export default function AboutSection() {
                 When I'm not coding, you can find me staying active as an athlete, exploring new design trends, or contributing to open-source projects.
               </p>
 
-              <div className="flex flex-wrap gap-4 pt-4">
+              {/* <div className="flex flex-wrap gap-4 pt-4">
                 <div className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700">
                   <span className="text-sm font-semibold text-white">Location:</span>
                   <span className="text-sm text-gray-300 ml-2">Your Location</span>
@@ -67,7 +68,7 @@ export default function AboutSection() {
                   <span className="text-sm font-semibold text-white">Experience:</span>
                   <span className="text-sm text-gray-300 ml-2">X+ Years</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </AnimatedContent>
 
@@ -115,20 +116,28 @@ export default function AboutSection() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
             <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">X+</div>
-              <div className="text-sm text-gray-400">Projects Completed</div>
+              <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+                <CountUp to={100} duration={2.5} />+
+              </div>
+              <div className="text-base md:text-lg text-gray-300 font-medium">Problems Solved on LeetCode</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">X+</div>
-              <div className="text-sm text-gray-400">Technologies</div>
+              <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+                <CountUp to={7} duration={2} />+
+              </div>
+              <div className="text-base md:text-lg text-gray-300 font-medium">Projects</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">X+</div>
-              <div className="text-sm text-gray-400">Years Experience</div>
+              <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+                <CountUp to={15} duration={2.5} />+
+              </div>
+              <div className="text-base md:text-lg text-gray-300 font-medium">Technologies Learned</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">X+</div>
-              <div className="text-sm text-gray-400">Happy Clients</div>
+              <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+                <CountUp to={1} duration={1.5} />
+              </div>
+              <div className="text-base md:text-lg text-gray-300 font-medium">Internship</div>
             </div>
           </div>
         </AnimatedContent>
