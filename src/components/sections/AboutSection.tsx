@@ -104,7 +104,7 @@ export default function AboutSection() {
               </p>
 
               <p className="text-lg text-gray-300 leading-relaxed font-semibold">
-                I'm skilled in <span className="text-white font-black text-xl">UI/UX design</span> using <span className="text-blue-400 font-bold">Figma</span> and <span className="text-blue-400 font-bold">Framer</span>, and work extensively with modern UI libraries including <span className="text-white font-black text-xl">ShadCN</span>, <span className="text-white font-black text-xl">Material UI</span>, <span className="text-white font-black text-xl">React Bits</span>, and <span className="text-white font-black text-xl">Aceternity</span>. My focus is on building <span className="text-blue-400 font-bold">scalable, high-impact solutions</span> that deliver exceptional user experiences.
+                I have experience in <span className="text-white font-black text-xl">UI/UX design</span> using <span className="text-blue-400 font-bold">Figma</span> and <span className="text-blue-400 font-bold">Framer</span>. I work extensively with modern UI libraries including <span className="text-white font-black text-xl">ShadCN</span>, <span className="text-white font-black text-xl">Material UI</span>, <span className="text-white font-black text-xl">React Bits</span>, and <span className="text-white font-black text-xl">Aceternity</span>. My focus is on building <span className="text-blue-400 font-bold">scalable, high-impact solutions</span> that deliver exceptional user experiences.
               </p>
 
               <p className="text-lg text-gray-300 leading-relaxed font-semibold">
@@ -178,7 +178,7 @@ export default function AboutSection() {
                           </div>
                           
                           {/* Tooltip */}
-                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                             {copiedEmail ? 'Copied!' : 'Copy email'}
                             <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
                               <div className="border-4 border-transparent border-t-gray-900" />
@@ -235,7 +235,7 @@ export default function AboutSection() {
           threshold={0.2}
           delay={0.6}
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-32">
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-bold text-white mb-3">
                 <CountUp to={100} duration={2.5} />+
