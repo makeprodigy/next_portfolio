@@ -5,8 +5,60 @@ import PixelCard from '@/components/ui/PixelCard';
 import CountUp from '@/components/ui/CountUp';
 import Image from 'next/image';
 import { DottedGlowBackground } from '@/components/ui/dotted-glow-background';
+import { FaLinkedin, FaGithub, FaEnvelope, FaTwitter } from 'react-icons/fa';
+import { socialLinks } from '@/config/social';
+import { useState } from 'react';
+import { LinkPreview } from '@/components/ui/link-preview';
 
 export default function AboutSection() {
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  // Icon mapping
+  const getIcon = (iconName: string) => {
+    switch (iconName.toLowerCase()) {
+      case 'linkedin':
+        return FaLinkedin;
+      case 'github':
+        return FaGithub;
+      case 'email':
+        return FaEnvelope;
+      case 'twitter':
+        return FaTwitter;
+      default:
+        return FaEnvelope;
+    }
+  };
+
+  // Color mapping for hover effects
+  const getHoverColor = (iconName: string) => {
+    switch (iconName.toLowerCase()) {
+      case 'linkedin':
+        return 'hover:bg-blue-600 hover:border-blue-500';
+      case 'github':
+        return 'hover:bg-gray-700 hover:border-gray-600';
+      case 'email':
+        return 'hover:bg-red-600 hover:border-red-500';
+      case 'twitter':
+        return 'hover:bg-sky-500 hover:border-sky-400';
+      default:
+        return 'hover:bg-gray-700 hover:border-gray-600';
+    }
+  };
+
+  // Filter to only show LinkedIn, GitHub, and Email
+  const displayedLinks = socialLinks.filter(link => 
+    ['linkedin', 'github', 'email'].includes(link.icon?.toLowerCase() || '')
+  );
+
+  // Handle email copy
+  const handleEmailClick = (href: string) => {
+    const email = href.replace('mailto:', '');
+    navigator.clipboard.writeText(email).then(() => {
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2000);
+    });
+  };
+
   return (
     <section id="about" className="py-20 bg-black -mt-[12.5rem] relative overflow-hidden">
       {/* Dotted Glow Background */}
@@ -84,7 +136,7 @@ export default function AboutSection() {
             threshold={0.2}
             delay={0.4}
           >
-            <div className="relative flex justify-center items-center">
+            <div className="relative flex flex-col justify-center items-center gap-6">
               <PixelCard variant="blue" className="mx-auto h-[500px] w-[400px] md:h-[600px] md:w-[480px]">
                 <div className="absolute inset-0 p-2 flex items-center justify-center overflow-hidden rounded-[20px]">
                   <div className="relative w-full h-full rounded-[15px] overflow-hidden">
@@ -98,6 +150,75 @@ export default function AboutSection() {
                   </div>
                 </div>
               </PixelCard>
+              
+              {/* Name and Social Links */}
+              <div className="flex flex-col items-center gap-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-white">
+                  Pushpendra S. Parihar
+                </h3>
+                
+                {/* Social Media Icons */}
+                <div className="flex gap-4">
+                  {displayedLinks.map((link) => {
+                    const Icon = getIcon(link.icon || '');
+                    const hoverColor = getHoverColor(link.icon || '');
+                    const isEmail = link.icon?.toLowerCase() === 'email';
+                    const hasPreview = ['github', 'linkedin'].includes(link.icon?.toLowerCase() || '');
+                    
+                    if (isEmail) {
+                      return (
+                        <button
+                          key={link.label}
+                          onClick={() => handleEmailClick(link.href)}
+                          className="group relative"
+                          aria-label={link.label}
+                        >
+                          <div className={`w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 flex items-center justify-center transition-all duration-100 ${hoverColor}`}>
+                            <Icon className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" />
+                          </div>
+                          
+                          {/* Tooltip */}
+                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                            {copiedEmail ? 'Copied!' : 'Copy email'}
+                            <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
+                              <div className="border-4 border-transparent border-t-gray-900" />
+                            </div>
+                          </div>
+                        </button>
+                      );
+                    }
+                    
+                    if (hasPreview) {
+                      return (
+                        <LinkPreview
+                          key={link.label}
+                          url={link.href}
+                          className="group relative"
+                        >
+                          <div className={`w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 flex items-center justify-center transition-all duration-100 ${hoverColor} cursor-pointer`}>
+                            <Icon className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" />
+                          </div>
+                        </LinkPreview>
+                      );
+                    }
+                    
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative"
+                        aria-label={link.label}
+                      >
+                        <div className={`w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 flex items-center justify-center transition-all duration-100 ${hoverColor}`}>
+                          <Icon className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" />
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </AnimatedContent>
         </div>
