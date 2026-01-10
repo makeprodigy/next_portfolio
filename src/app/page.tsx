@@ -1,6 +1,7 @@
 import CardNav from '@/components/sections/Navbar';
 import StaggeredMenu from '@/components/sections/Navbar_Smaller';
 import HeroSection from '@/components/sections/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       </div>
       <main>
         <HeroSection />
+        <AboutSection />
         {/* Other portfolio sections will go here */}
       </main>
     </>
