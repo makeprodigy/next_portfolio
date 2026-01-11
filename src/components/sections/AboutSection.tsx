@@ -73,7 +73,7 @@ export default function AboutSection() {
         speedScale={1.2}
       />
       
-      <div className="container mx-auto px-4 max-w-6xl relative z-10">
+      <div className="container mx-auto  max-w-6xl relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <AnimatedContent
@@ -92,7 +92,7 @@ export default function AboutSection() {
             </h2>
             <div className="space-y-6">
               <p className="text-lg text-gray-300 leading-relaxed font-semibold">
-                I'm a <span className="text-white font-black text-xl">Full-stack Developer</span> experienced in building <span className="text-blue-400 font-bold">responsive, user-centric web applications</span>. I love creating elegant solutions to complex problems and bringing ideas to life through code.
+                I'm a <span className="text-white font-black text-xl">Full-stack Developer</span> experienced in building <span className="text-blue-400 font-bold">impactful, user-centric web applications</span>. I love creating elegant solutions to complex problems and bringing ideas to life through code.
               </p>
               
               <p className="text-lg text-gray-300 leading-relaxed font-semibold">
