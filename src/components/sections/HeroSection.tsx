@@ -8,7 +8,7 @@ import { ContainerTextFlip } from '@/components/ui/container-text-flip';
 import { BackgroundBeams } from '@/components/ui/background-beams';
 import Image from 'next/image';
 import { socialLinks } from '@/config/social';
-import { FaLinkedin, FaGithub, FaEnvelope, FaTwitter } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope, FaTwitter, FaFileAlt } from 'react-icons/fa';
 import { 
   SiTypescript, 
   SiJavascript, 
@@ -96,7 +96,7 @@ export default function HeroSection() {
           raysSpeed={1.5}
           lightSpread={0.8}
           rayLength={2.0}
-          followMouse={true}
+          followMouse={false}
           mouseInfluence={0.1}
           noiseAmount={0.1}
           className="custom-rays"
@@ -216,6 +216,27 @@ export default function HeroSection() {
                             </a>
                           );
                         })}
+                        
+                        {/* Resume CTA */}
+                        <a
+                          href="https://drive.google.com/file/d/1m9TPGTcvg8NhbSwnN4MaHK-ZyiE6UG5K/view?usp=sharing"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group relative"
+                          aria-label="View Resume"
+                        >
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-200 hover:bg-green-600 hover:border-green-500">
+                            <FaFileAlt className="w-6 h-6 sm:w-7 sm:h-7 text-gray-300 group-hover:text-white transition-colors" />
+                          </div>
+                          
+                          {/* Tooltip */}
+                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                            View Resume
+                            <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
+                              <div className="border-4 border-transparent border-t-gray-900" />
+                            </div>
+                          </div>
+                        </a>
                       </div>
                     </div>
 

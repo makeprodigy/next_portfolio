@@ -5,7 +5,7 @@ import PixelCard from '@/components/ui/PixelCard';
 import CountUp from '@/components/ui/CountUp';
 import Image from 'next/image';
 import { DottedGlowBackground } from '@/components/ui/dotted-glow-background';
-import { FaLinkedin, FaGithub, FaEnvelope, FaTwitter } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope, FaTwitter, FaFileAlt } from 'react-icons/fa';
 import { socialLinks } from '@/config/social';
 import { useState } from 'react';
 import { LinkPreview } from '@/components/ui/link-preview';
@@ -217,6 +217,27 @@ export default function AboutSection() {
                       </a>
                     );
                   })}
+                  
+                  {/* Resume CTA */}
+                  <a
+                    href="https://drive.google.com/file/d/1m9TPGTcvg8NhbSwnN4MaHK-ZyiE6UG5K/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative"
+                    aria-label="View Resume"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 flex items-center justify-center transition-all duration-100 hover:bg-green-600 hover:border-green-500">
+                      <FaFileAlt className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" />
+                    </div>
+                    
+                    {/* Tooltip */}
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                      View Resume
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
+                        <div className="border-4 border-transparent border-t-gray-900" />
+                      </div>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -224,44 +245,32 @@ export default function AboutSection() {
         </div>
 
         {/* Stats or Highlights */}
-        <AnimatedContent
-          distance={80}
-          direction="vertical"
-          reverse={true}
-          duration={1}
-          ease="power3.out"
-          initialOpacity={0}
-          animateOpacity
-          threshold={0.2}
-          delay={0.6}
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-32">
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-white mb-3">
-                <CountUp to={100} duration={2.5} />+
-              </div>
-              <div className="text-base md:text-lg text-gray-300 font-medium">Problems Solved on LeetCode</div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24">
+          <div className="text-center">
+            <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+              <CountUp to={100} duration={2.5} />+
             </div>
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-white mb-3">
-                <CountUp to={7} duration={2} />+
-              </div>
-              <div className="text-base md:text-lg text-gray-300 font-medium">Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-white mb-3">
-                <CountUp to={15} duration={2.5} />+
-              </div>
-              <div className="text-base md:text-lg text-gray-300 font-medium">Technologies Learned</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-white mb-3">
-                <CountUp to={1} duration={1.5} />
-              </div>
-              <div className="text-base md:text-lg text-gray-300 font-medium">Internship</div>
-            </div>
+            <div className="text-base md:text-lg text-gray-300 font-medium">Problems Solved on LeetCode</div>
           </div>
-        </AnimatedContent>
+          <div className="text-center">
+            <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+              <CountUp to={7} duration={2} />+
+            </div>
+            <div className="text-base md:text-lg text-gray-300 font-medium">Projects</div>
+          </div>
+          <div className="text-center">
+            <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+              <CountUp to={15} duration={2.5} />+
+            </div>
+            <div className="text-base md:text-lg text-gray-300 font-medium">Technologies Learned</div>
+          </div>
+          <div className="text-center">
+            <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+              <CountUp to={1} duration={1.5} />
+            </div>
+            <div className="text-base md:text-lg text-gray-300 font-medium">Internship</div>
+          </div>
+        </div>  
       </div>
     </section>
   );
