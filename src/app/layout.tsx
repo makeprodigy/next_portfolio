@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Poiret_One, Space_Grotesk } from "next/font/google";
+import { Slabo_27px, Hanuman } from "next/font/google";
 import "./globals.css";
 
-// Primary font - thin and elegant
-const primaryFont = Poiret_One({
+// Primary font - Slabo 27px
+const primaryFont = Slabo_27px({
   subsets: ["latin"],
   variable: "--font-primary",
   weight: ["400"],
   display: "swap",
 });
 
-// Secondary font - for headings
-const secondaryFont = Space_Grotesk({
+// Secondary font - Hanuman Variable
+const secondaryFont = Hanuman({
   subsets: ["latin"],
   variable: "--font-secondary",
-  weight: ["400", "500", "600", "700"],
+  weight: ["100", "300", "400", "700", "900"],
   display: "swap",
 });
 
