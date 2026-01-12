@@ -244,10 +244,10 @@ export default function HeroSection() {
                     <div className="flex flex-col gap-5 text-center md:text-left">
                       {/* Name */}
                       <div>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-2">
                           Pushpendra S. Parihar
                         </h2>
-                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-400 font-semibold">
+                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-400 font-normal">
                           Full Stack Developer • Designer • Athlete
                         </p>
                       </div>
