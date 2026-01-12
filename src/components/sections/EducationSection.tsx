@@ -16,7 +16,7 @@ export default function EducationSection() {
               <p className="text-white text-lg md:text-xl font-bold">98%</p>
             </div>
           </div>
-          <p className="text-gray-300 text-base md:text-xl mb-6 leading-relaxed">
+          <p className="text-gray-100 text-base md:text-xl mb-6 leading-relaxed font-semibold">
             Completed high school education with strong foundation in Science and Mathematics. 
             Developed initial interest in programming and technology.
           </p>
@@ -25,15 +25,15 @@ export default function EducationSection() {
               <p className="text-base md:text-lg font-bold text-blue-400 mb-3">
                 Focus Areas
               </p>
-              <p className="text-base md:text-lg text-gray-200 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-100 leading-relaxed font-semibold">
                 Science, Mathematics, Basic Computing
               </p>
             </div>
-            <div className="bg-neutral-900/80 border-2 border-neutral-600 rounded-xl p-6 transition-all duration-300 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20">
+            <div className="bg-neutral-700/80 border-2 border-neutral-600 rounded-xl p-6 transition-all duration-300 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20">
               <p className="text-base md:text-lg font-bold text-blue-400 mb-3">
-                Achievements
+                Milestones
               </p>
-              <p className="text-base md:text-lg text-gray-200 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-100 leading-relaxed font-semibold">
                 Strong academic foundation, Introduction to coding
               </p>
             </div>
@@ -53,7 +53,7 @@ export default function EducationSection() {
               <p className="text-white text-lg md:text-xl font-bold">87%</p>
             </div>
           </div>
-          <p className="text-gray-300 text-base md:text-xl mb-6 leading-relaxed">
+          <p className="text-gray-100 text-base md:text-xl mb-6 leading-relaxed font-semibold">
             Completed higher secondary education with focus on advanced mathematics and computer science. 
             Started exploring programming languages and web development seriously.
           </p>
@@ -62,17 +62,16 @@ export default function EducationSection() {
               <p className="text-base md:text-lg font-bold text-blue-400 mb-4">
                 Key Subjects
               </p>
-              <ul className="text-base md:text-lg text-gray-200 list-disc list-inside space-y-2 leading-relaxed">
+              <ul className="text-base md:text-lg text-gray-100 list-disc list-inside space-y-2 leading-relaxed font-semibold">
                 <li>Advanced Mathematics</li>
                 <li>Physics & Chemistry</li>
-                <li>Computer Science</li>
               </ul>
             </div>
-            <div className="bg-neutral-900/80 border-2 border-neutral-600 rounded-xl p-6 transition-all duration-300 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20">
+            <div className="bg-neutral-700/80 border-2 border-neutral-600 rounded-xl p-6 transition-all duration-300 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20">
               <p className="text-base md:text-lg font-bold text-blue-400 mb-4">
                 Milestones
               </p>
-              <ul className="text-base md:text-lg text-gray-200 list-disc list-inside space-y-2 leading-relaxed">
+              <ul className="text-base md:text-lg text-gray-100 list-disc list-inside space-y-2 leading-relaxed font-semibold">
                 <li>First web development projects</li>
                 <li>Started learning programming</li>
               </ul>
@@ -93,7 +92,7 @@ export default function EducationSection() {
               <p className="text-white text-lg md:text-xl font-bold">CGPA 8.1</p>
             </div>
           </div>
-          <p className="text-gray-300 text-base md:text-xl mb-6 leading-relaxed">
+          <p className="text-gray-100 text-base md:text-xl mb-6 leading-relaxed font-semibold">
             Started undergraduate degree in Bachelor of Technology (B.Tech) specializing in Computer Science and Artificial Intelligence. 
             Deep diving into advanced algorithms, AI/ML, and full-stack development.
           </p>
@@ -102,18 +101,18 @@ export default function EducationSection() {
               <p className="text-base md:text-lg font-bold text-blue-400 mb-4">
                 Core Focus
               </p>
-              <ul className="text-base md:text-lg text-gray-200 list-disc list-inside space-y-2 leading-relaxed">
+              <ul className="text-base md:text-lg text-gray-100 list-disc list-inside space-y-2 leading-relaxed font-semibold">
                 <li>Data Structures & Algorithms</li>
                 <li>AI & Machine Learning</li>
                 <li>System Design</li>
                 <li>Full-Stack Development</li>
               </ul>
             </div>
-            <div className="bg-neutral-900/80 border-2 border-neutral-600 rounded-xl p-6 transition-all duration-300 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20">
+            <div className="bg-neutral-700/80 border-2 border-neutral-600 rounded-xl p-6 transition-all duration-300 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20">
               <p className="text-base md:text-lg font-bold text-blue-400 mb-4">
-                Achievements
+                Milestones
               </p>
-              <ul className="text-base md:text-lg text-gray-200 list-disc list-inside space-y-2 leading-relaxed">
+              <ul className="text-base md:text-lg text-gray-100 list-disc list-inside space-y-2 leading-relaxed font-semibold">
                 <li>100+ LeetCode problems solved</li>
                 <li>7+ projects completed</li>
                 <li>1 internship experience</li>
@@ -131,7 +130,7 @@ export default function EducationSection() {
           <p className="text-white text-xl md:text-2xl font-bold mb-6 animate-pulse">
             Current Journey
           </p>
-          <p className="text-gray-300 text-base md:text-xl mb-6 leading-relaxed">
+          <p className="text-gray-100 text-base md:text-xl mb-6 leading-relaxed font-semibold">
             Continuing B.Tech program with advanced coursework and hands-on projects. 
             Actively building impactful applications and preparing for industry challenges.
           </p>
@@ -155,7 +154,7 @@ export default function EducationSection() {
           <p className="text-white text-xl md:text-2xl font-bold mb-6">
             Graduation & Beyond
           </p>
-          <p className="text-gray-300 text-base md:text-xl mb-6 leading-relaxed">
+          <p className="text-gray-100 text-base md:text-xl mb-6 leading-relaxed font-semibold">
             Expected graduation with B.Tech degree in Computer Science and Artificial Intelligence. 
             Ready to make significant contributions in the tech industry and work on innovative solutions.
           </p>
@@ -163,7 +162,7 @@ export default function EducationSection() {
             <p className="text-base md:text-lg font-bold text-blue-400 mb-4">
               Future Goals
             </p>
-            <ul className="text-base md:text-lg text-gray-200 list-disc list-inside space-y-2 leading-relaxed">
+            <ul className="text-base md:text-lg text-gray-100 list-disc list-inside space-y-2 leading-relaxed font-semibold">
               <li>Complete B.Tech in CS & AI</li>
               <li>Build impactful AI-powered solutions</li>
               <li>Contribute to cutting-edge projects</li>
