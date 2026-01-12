@@ -107,7 +107,7 @@ export default function AboutSection() {
                 I have experience in <span className="text-white font-black text-xl">UI/UX design</span> using <span className="text-blue-400 font-bold">Figma</span> and <span className="text-blue-400 font-bold">Framer</span>. I work extensively with modern UI libraries including <span className="text-white font-black text-xl">ShadCN</span>, <span className="text-white font-black text-xl">Material UI</span>, <span className="text-white font-black text-xl">React Bits</span>, and <span className="text-white font-black text-xl">Aceternity</span>. My focus is on building <span className="text-blue-400 font-bold">scalable, high-impact solutions</span> that deliver exceptional user experiences.
               </p>
 
-              <p className="text-lg text-gray-300 leading-relaxed font-semibold">
+              <p className="text-lg text-gray-100 leading-relaxed font-semibold">
                 When I'm not coding, you can find me staying active as an athlete, exploring new design trends, or contributing to open-source projects.
               </p>
 
