@@ -90,7 +90,7 @@ const ScrollTracker: React.FC<ScrollTrackerProps> = ({ sections }) => {
                   ${
                     isActive
                       ? 'text-white font-black'
-                      : 'text-gray-400 dark:text-gray-500 font-semibold group-hover:text-gray-300 dark:group-hover:text-gray-400'
+                      : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-300 dark:group-hover:text-gray-400'
                   }
                 `}
               >
