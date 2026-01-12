@@ -94,11 +94,12 @@ export default function HeroSection() {
           raysOrigin="top-center"
           raysColor="#ffffff"
           raysSpeed={1.5}
-          lightSpread={0.8}
+          lightSpread={0.7}
           rayLength={2.0}
           followMouse={false}
           mouseInfluence={0.1}
           noiseAmount={0.1}
+          saturation={7}
           className="custom-rays"
         />
       </div>
@@ -109,7 +110,7 @@ export default function HeroSection() {
           distance={150}
           direction="vertical"
           reverse={false}
-          duration={1.2}
+          duration={2.0}
           ease="power3.out"
           disappearEase="power3.in"
           initialOpacity={0.2}
