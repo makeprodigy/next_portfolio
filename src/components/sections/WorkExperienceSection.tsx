@@ -2,6 +2,8 @@
 
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { DottedGlowBackground } from "@/components/ui/dotted-glow-background";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 interface WorkExperience {
   id: number;
@@ -34,7 +36,7 @@ const experiences: WorkExperience[] = [
       "Built and maintained frontend using React and modern UI libraries (Aceternity UI)",
       "Worked in remote Agile environment with sprint-based collaboration"
     ],
-    technologies: ["React", "TypeScript", "Aceternity UI", "Agile", "Slack", "Go"]
+    technologies: ["React", "JavaScript", "Aceternity UI", "Agile", "Slack", "Go"]
   }
 ];
 
@@ -53,16 +55,16 @@ export default function WorkExperienceSection() {
         speedScale={1.2}
       />
       
-      <div className="container mx-auto px-2 max-w-6xl relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold mb-24 text-white">
-          Work Experience
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
+        <h2 className={cn(typography.sectionTitle, "mb-12")}>
+          WORK EXPERIENCE
         </h2>
         
-        <div className="space-y-16">
+        <div className="space-y-12">
           {experiences.map((experience) => (
             <div
               key={experience.id}
-              className="group relative flex flex-col md:flex-row gap-8 justify-center items-start"
+              className="group relative flex flex-col md:flex-row gap-6 justify-center items-start"
             >
               {/* LEFT SIDE - Hanging ID Card */}
               <div className="flex-shrink-0 w-full md:w-72 relative">
@@ -74,20 +76,20 @@ export default function WorkExperienceSection() {
 
                 {/* ID Card with Spotlight Effect */}
                 <CardSpotlight
-                  className="relative bg-gray-900 rounded-2xl p-6 shadow-2xl border-2 border-gray-700"
+                  className="relative bg-gray-900 rounded-2xl p-6 shadow-2xl"
                   radius={350}
                   color="#1e40af"
                 >
                   {/* Hole for lanyard with wrap effect */}
                   <div className="absolute left-1/2 -translate-x-1/2 top-2 w-20 h-6 flex items-center justify-center z-10">
                     {/* Visible hole/slot */}
-                    <div className="w-16 h-4 bg-black rounded-md border-2 border-gray-700 shadow-inner relative overflow-hidden">
+                    <div className="w-16 h-4 bg-black rounded-md shadow-inner relative overflow-hidden">
 
                     </div>
                   </div>
                   
                   {/* Card Content */}
-                  <div className="relative flex flex-col items-center text-center space-y-4 pt-2 z-10">
+                  <div className="relative flex flex-col items-center text-center space-y-3 pt-2 z-10">
                     {/* Company Logo */}
                     <div className="w-40 h-20 rounded-xl flex items-center justify-center">
                       <img
@@ -99,41 +101,41 @@ export default function WorkExperienceSection() {
                     
                     {/* Company Name */}
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">
+                      <h3 className={cn(typography.weCardTitle, "mb-1.5")}>
                         {experience.company}
                       </h3>
-                      <span className="inline-block px-4 py-1.5 text-sm font-bold bg-white text-black rounded-sm shadow-lg">
+                      <span className={cn("inline-block px-4 py-1.5 bg-white text-black rounded-sm shadow-lg", typography.weBadge)}>
                         {experience.type}
                       </span>
                     </div>
                     
                     {/* Designation */}
-                    <div className="w-full pt-4 border-t-2 border-gray-700">
-                      <p className="text-xs text-gray-400 mb-1.5 uppercase tracking-wider font-bold">Designation</p>
-                      <p className="text-lg font-bold text-blue-400">
+                    <div className="w-full pt-3 border-t-2 border-gray-700">
+                      <p className={cn(typography.label, "mb-1")}>Designation</p>
+                      <p className={typography.weDesignation}>
                         {experience.designation}
                       </p>
                     </div>
                     
                     {/* Duration & Location */}
-                    <div className="w-full space-y-2.5 text-sm text-gray-300">
+                    <div className={cn("w-full space-y-1.5", typography.weMeta)}>
                       <div className="flex items-center justify-center gap-2">
-                        <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <span className="font-extrabold">{experience.duration}</span>
+                        <span className="font-normal">{experience.duration}</span>
                       </div>
                       <div className="flex items-center justify-center gap-2">
-                        <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        <span className="font-semibold">{experience.location}</span>
+                        <span className="font-normal">{experience.location}</span>
                       </div>
                     </div>
 
                     {/* Decorative barcode/pattern at bottom */}
-                    <div className="w-full pt-4 border-t-2 border-gray-700">
+                    <div className="w-full pt-3 border-t-2 border-gray-700">
                       <div className="flex justify-center gap-1">
                         <div className="w-1 h-8 bg-white"></div>
                         <div className="w-0.5 h-8 bg-gray-400"></div>
@@ -150,11 +152,11 @@ export default function WorkExperienceSection() {
               </div>
 
               {/* RIGHT SIDE - Free Text Details */}
-              <div className="flex-1 space-y-8 pt-4">
+              <div className="flex-1 space-y-5 pt-1">
                 {/* Company Info */}
                 {experience.companyInfo && (
-                  <div className="bg-blue-500/10 border-l-6 border-blue-500 p-4">
-                    <p className="text-blue-300 text-lg font-bold flex items-center gap-2">
+                  <div className="bg-neutral-900/50 border-l-4 border-neutral-700 p-3">
+                    <p className={cn(typography.weBody, "flex items-center gap-2 leading-snug")}>
                       {experience.companyInfo}
                     </p>
                   </div>
@@ -162,29 +164,27 @@ export default function WorkExperienceSection() {
 
                 {/* Summary */}
                 <div>
-                  <h4 className="text-3xl font-bold text-white mb-4 flex items-center gap-3">
-                    <span className="w-1.5 h-7 bg-blue-500" />
+                  <h4 className={cn(typography.weSubsectionTitle, "mb-2")}>
                     Overview
                   </h4>
-                  <p className="text-gray-200 text-xl leading-relaxed font-semibold">
+                  <p className={cn(typography.weBody, "leading-snug")}>
                     {experience.summary}
                   </p>
                 </div>
 
                 {/* Responsibilities */}
                 <div>
-                  <h4 className="text-3xl font-bold text-white mb-5 flex items-center gap-3">
-                    <span className="w-1.5 h-7 bg-blue-500" />
+                  <h4 className={cn(typography.weSubsectionTitle, "mb-2")}>
                     Key Responsibilities
                   </h4>
-                  <ul className="">
+                  <ul className="space-y-1.5">
                     {experience.responsibilities.map((responsibility, index) => (
                       <li
                         key={index}
-                        className="flex items-start gap-3 text-gray-200 text-lg font-semibold"
+                        className={cn("flex items-start gap-2.5", typography.weBody, "leading-snug")}
                       >
-                        <span className="flex-shrink-0 w-2 h-2 rounded-full bg-blue-500 mt-2.5" />
-                        <span className="leading-relaxed">{responsibility}</span>
+                        <span className="flex-shrink-0 w-2 h-2 rounded-full bg-neutral-400 mt-1.5" />
+                        <span>{responsibility}</span>
                       </li>
                     ))}
                   </ul>
@@ -193,15 +193,14 @@ export default function WorkExperienceSection() {
                 {/* Technologies */}
                 {experience.technologies && experience.technologies.length > 0 && (
                   <div>
-                    <h4 className="text-3xl font-bold text-white mb-5 flex items-center gap-3">
-                      <span className="w-1.5 h-7 bg-blue-500" />
-                      Technologies Used
+                    <h4 className={cn(typography.weSubsectionTitle, "mb-2")}>
+                      Tech Stack
                     </h4>
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap gap-2">
                       {experience.technologies.map((tech, index) => (
                         <span
                           key={index}
-                          className="px-5 py-2.5 text-base font-semibold text-gray-200 rounded-lg border-2 border-gray-600 hover:border-blue-500 hover:text-white hover:bg-blue-500/10 transition-all duration-300"
+                          className={cn("px-3 py-1 bg-neutral-800 rounded-full", typography.weTechTag)}
                         >
                           {tech}
                         </span>
