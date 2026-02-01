@@ -121,8 +121,8 @@ export default function HeroSection() {
         >
           <ContainerScroll
             titleComponent={
-              <div className="text-center space-y-4">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg flex flex-wrap items-center justify-center gap-4">
+              <div className="text-center space-y-3">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg flex flex-wrap items-center justify-center gap-3">
                   <ContainerTextFlip
                     words={["Hello!", "नमस्ते","ನಮಸ್ಕಾರ","வணக்கம்","こんにちは","నమస్తే","Hola!","നമസ്കാരം","Bonjour!","你好"]}
                     interval={2500}
@@ -159,9 +159,9 @@ export default function HeroSection() {
                 <BackgroundBeams className="absolute inset-0 z-0" />
                 
                 {/* Content */}
-                <div className="grid md:grid-cols-[auto_1fr] gap-8 md:gap-12 lg:gap-16 items-center w-full h-full p-8 sm:p-10 md:p-12 lg:p-16 relative z-10">
+                <div className="grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 lg:gap-10 items-center w-full h-full p-6 sm:p-8 md:p-10 lg:p-12 relative z-10">
                     {/* Portrait Section */}
-                    <div className="flex flex-col items-center md:items-start gap-4 mx-auto md:mx-0">
+                    <div className="flex flex-col items-center md:items-start gap-3 mx-auto md:mx-0">
                       <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-2xl overflow-hidden ring-4 ring-white/20 shadow-lg">
                         <Image
                           src="/my_portrait.jpeg"
@@ -242,28 +242,28 @@ export default function HeroSection() {
                     </div>
 
                     {/* Content Section */}
-                    <div className="flex flex-col gap-5 text-center md:text-left">
+                    <div className="flex flex-col gap-4 text-center md:text-left leading-snug">
                       {/* Name */}
                       <div>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-2">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-1.5">
                           Pushpendra S. Parihar
                         </h2>
-                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-400 font-normal">
+                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-neutral-400 font-normal leading-snug">
                           Full Stack Developer • Designer • Athlete
                         </p>
                       </div>
 
                       {/* Brief Introduction */}
-                      <p className="text-sm sm:text-base md:text-lg text-white leading-relaxed">
-                        I'm a <span className="text-white font-bold">Full-stack Developer</span> passionate about building <span className="text-blue-400 font-semibold">impactful, user-centric web applications</span>. I love creating elegant solutions to complex problems and bringing ideas to life through code.
+                      <p className="text-xs sm:text-sm md:text-base text-neutral-400 leading-snug font-normal">
+                        I'm a <span className="text-white font-medium">Full-stack Developer</span> passionate about building <span className="text-white font-medium">impactful, user-centric web applications</span>. I love creating elegant solutions to complex problems and bringing ideas to life through code.
                       </p>
 
                       {/* Tech Stack */}
                       <div>
-                        <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-400 mb-3">
+                        <h3 className="text-sm sm:text-base md:text-lg font-medium text-white mb-2">
                           Tech Stack
                         </h3>
-                        <div className="flex flex-wrap gap-2 sm:gap-2.5 md:gap-3 justify-center md:justify-start">
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-2.5 justify-center md:justify-start">
                           {techStack.map((tech) => {
                             const Icon = tech.icon;
                             return (
@@ -275,7 +275,7 @@ export default function HeroSection() {
                                   className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:scale-110" 
                                   style={{ color: tech.color }}
                                 />
-                                <span className="text-xs sm:text-sm md:text-base font-medium text-gray-300 group-hover:text-white transition-colors">
+                                <span className="text-xs sm:text-sm md:text-base font-normal text-neutral-200 group-hover:text-white transition-colors">
                                   {tech.name}
                                 </span>
                               </div>
