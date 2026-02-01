@@ -9,6 +9,8 @@ import { FaLinkedin, FaGithub, FaEnvelope, FaTwitter, FaFileAlt } from 'react-ic
 import { socialLinks } from '@/config/social';
 import { useState } from 'react';
 import { LinkPreview } from '@/components/ui/link-preview';
+import { typography } from '@/lib/typography';
+import { cn } from '@/lib/utils';
 
 export default function AboutSection() {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -73,8 +75,8 @@ export default function AboutSection() {
         speedScale={1.2}
       />
       
-      <div className="container mx-auto  max-w-6xl relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Text Content */}
           <AnimatedContent
             distance={80}
@@ -87,27 +89,27 @@ export default function AboutSection() {
             threshold={0.2}
             delay={0.2}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-white">
-            About Me
+            <h2 className={cn(typography.sectionTitle, 'mb-8')}>
+              ABOUT ME
             </h2>
-            <div className="space-y-6">
-              <p className="text-lg text-gray-300 leading-relaxed font-semibold">
-                I'm a <span className="text-white font-black text-xl">Full-stack Developer</span> experienced in building <span className="text-blue-400 font-bold">impactful, user-centric web applications</span>. I love creating elegant solutions to complex problems and bringing ideas to life through code.
+            <div className="space-y-4 leading-snug">
+              <p className={cn(typography.body, 'leading-snug')}>
+                I'm a <span className={typography.emphasis}>Full-stack Developer</span> experienced in building <span className={typography.emphasis}>impactful, user-centric web applications</span>. I love creating elegant solutions to complex problems and bringing ideas to life through code.
               </p>
               
-              <p className="text-lg text-gray-300 leading-relaxed font-semibold">
-                With expertise in <span className="text-white font-black text-xl">TypeScript/JavaScript</span>, <span className="text-white font-black text-xl">Next.js, React</span>, and modern <span className="text-white font-black text-xl">CSS</span>, I craft seamless frontend experiences and I'm proficient in <span className="text-white font-black text-xl">Node.js</span>, <span className="text-white font-black text-xl">Express</span>, <span className="text-white font-black text-xl">Python</span>, and both <span className="text-white font-black text-xl">SQL/MySQL</span> and <span className="text-white font-black text-xl">NoSQL/MongoDB</span> databases, with a strong foundation in <span className="text-blue-400 font-bold">data structures and algorithms</span>.
+              <p className={cn(typography.body, 'leading-snug')}>
+                With expertise in <span className={typography.emphasis}>TypeScript/JavaScript</span>, <span className={typography.emphasis}>Next.js, React</span>, and modern <span className={typography.emphasis}>CSS</span>, I craft seamless frontend experiences and I'm proficient in <span className={typography.emphasis}>Node.js</span>, <span className={typography.emphasis}>Express</span>, <span className={typography.emphasis}>Python</span>, and both <span className={typography.emphasis}>SQL/MySQL</span> and <span className={typography.emphasis}>NoSQL/MongoDB</span> databases, with a strong foundation in <span className={typography.emphasis}>data structures and algorithms</span>.
               </p>
 
-              <p className="text-lg text-gray-300 leading-relaxed font-semibold">
-                I also work with <span className="text-blue-400 font-bold">data science and AI tools</span>, leveraging <span className="text-white font-black text-xl">NumPy</span> and <span className="text-white font-black text-xl">Pandas</span> for data analysis and manipulation, enabling me to build intelligent, data-driven applications.
+              <p className={cn(typography.body, 'leading-snug')}>
+                I also work with <span className={typography.emphasis}>data science and AI tools</span>, leveraging <span className={typography.emphasis}>NumPy</span> and <span className={typography.emphasis}>Pandas</span> for data analysis and manipulation, enabling me to build intelligent, data-driven applications.
               </p>
 
-              <p className="text-lg text-gray-300 leading-relaxed font-semibold">
-                I have experience in <span className="text-white font-black text-xl">UI/UX design</span> using <span className="text-blue-400 font-bold">Figma</span> and <span className="text-blue-400 font-bold">Framer</span>. I work extensively with modern UI libraries including <span className="text-white font-black text-xl">ShadCN</span>, <span className="text-white font-black text-xl">Material UI</span>, <span className="text-white font-black text-xl">React Bits</span>, and <span className="text-white font-black text-xl">Aceternity</span>. My focus is on building <span className="text-blue-400 font-bold">scalable, high-impact solutions</span> that deliver exceptional user experiences.
+              <p className={cn(typography.body, 'leading-snug')}>
+                I have experience in <span className={typography.emphasis}>UI/UX design</span> using <span className={typography.emphasis}>Figma</span> and <span className={typography.emphasis}>Framer</span>. I work extensively with modern UI libraries including <span className={typography.emphasis}>ShadCN</span>, <span className={typography.emphasis}>Material UI</span>, <span className={typography.emphasis}>React Bits</span>, and <span className={typography.emphasis}>Aceternity</span>. My focus is on building <span className={typography.emphasis}>scalable, high-impact solutions</span> that deliver exceptional user experiences.
               </p>
 
-              <p className="text-lg text-gray-100 leading-relaxed font-semibold">
+              <p className={cn(typography.body, 'leading-snug')}>
                 When I'm not coding, you can find me staying active as an athlete, exploring new design trends, or contributing to open-source projects.
               </p>
 
@@ -136,7 +138,7 @@ export default function AboutSection() {
             threshold={0.2}
             delay={0.4}
           >
-            <div className="relative flex flex-col justify-center items-center gap-6">
+            <div className="relative flex flex-col justify-center items-center gap-4">
               <PixelCard variant="blue" className="mx-auto h-[500px] w-[400px] md:h-[600px] md:w-[480px]">
                 <div className="absolute inset-0 p-2 flex items-center justify-center overflow-hidden rounded-[20px]">
                   <div className="relative w-full h-full rounded-[15px] overflow-hidden">
@@ -152,8 +154,8 @@ export default function AboutSection() {
               </PixelCard>
               
               {/* Name and Social Links */}
-              <div className="flex flex-col items-center gap-4">
-                <h3 className="text-2xl md:text-3xl font-bold text-white">
+              <div className="flex flex-col items-center gap-3">
+                <h3 className={typography.subsectionTitleWhite}>
                   Pushpendra S. Parihar
                 </h3>
                 
@@ -178,7 +180,7 @@ export default function AboutSection() {
                           </div>
                           
                           {/* Tooltip */}
-                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                          <div className={cn('absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none', typography.tooltip)}>
                             {copiedEmail ? 'Copied!' : 'Copy email'}
                             <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
                               <div className="border-4 border-transparent border-t-gray-900" />
@@ -231,7 +233,7 @@ export default function AboutSection() {
                     </div>
                     
                     {/* Tooltip */}
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    <div className={cn('absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none', typography.tooltip)}>
                       View Resume
                       <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
                         <div className="border-4 border-transparent border-t-gray-900" />
@@ -247,28 +249,28 @@ export default function AboutSection() {
         {/* Stats or Highlights */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24">
           <div className="text-center">
-            <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+            <div className={cn(typography.statNumber, 'mb-3')}>
               <CountUp to={100} duration={2.5} />+
             </div>
-            <div className="text-base md:text-lg text-gray-300 font-medium">Problems Solved on LeetCode</div>
+            <div className={typography.statLabel}>Problems Solved on LeetCode</div>
           </div>
           <div className="text-center">
-            <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+            <div className={cn(typography.statNumber, 'mb-2')}>
               <CountUp to={7} duration={2} />+
             </div>
-            <div className="text-base md:text-lg text-gray-300 font-medium">Projects</div>
+            <div className={typography.statLabel}>Projects</div>
           </div>
           <div className="text-center">
-            <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+            <div className={cn(typography.statNumber, 'mb-2')}>
               <CountUp to={15} duration={2.5} />+
             </div>
-            <div className="text-base md:text-lg text-gray-300 font-medium">Technologies Learned</div>
+            <div className={typography.statLabel}>Technologies Learned</div>
           </div>
           <div className="text-center">
-            <div className="text-5xl md:text-6xl font-bold text-white mb-3">
+            <div className={cn(typography.statNumber, 'mb-2')}>
               <CountUp to={1} duration={1.5} />
             </div>
-            <div className="text-base md:text-lg text-gray-300 font-medium">Internship</div>
+            <div className={typography.statLabel}>Internship</div>
           </div>
         </div>  
       </div>
