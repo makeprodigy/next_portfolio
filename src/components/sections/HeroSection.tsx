@@ -22,6 +22,8 @@ import {
   SiFigma
 } from 'react-icons/si';
 import { useState } from 'react';
+import { typography } from '@/lib/typography';
+import { cn } from '@/lib/utils';
 
 export default function HeroSection() {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -122,7 +124,7 @@ export default function HeroSection() {
           <ContainerScroll
             titleComponent={
               <div className="text-center space-y-3">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg flex flex-wrap items-center justify-center gap-3">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white drop-shadow-lg flex flex-wrap items-center justify-center gap-3">
                   <ContainerTextFlip
                     words={["Hello!", "नमस्ते","ನಮಸ್ಕಾರ","வணக்கம்","こんにちは","నమస్తే","Hola!","നമസ്കാരം","Bonjour!","你好"]}
                     interval={2500}
@@ -140,7 +142,7 @@ export default function HeroSection() {
                     />
                   </span>
                 </h1>
-                <p className="text-base md:text-xg lg:text-2xl text-white font-bold max-w-2xl mx-auto px-4 drop-shadow-md">
+                <p className="text-base md:text-xl lg:text-2xl text-white font-semibold max-w-2xl mx-auto px-4 drop-shadow-md">
                   <EncryptedText
                     text="Full Stack Developer . Designer . Athlete"
                     revealDelayMs={40}
@@ -245,22 +247,22 @@ export default function HeroSection() {
                     <div className="flex flex-col gap-4 text-center md:text-left leading-snug">
                       {/* Name */}
                       <div>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-1.5">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-1.5">
                           Pushpendra S. Parihar
                         </h2>
-                        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-neutral-400 font-normal leading-snug">
+                        <p className={cn(typography.body, 'leading-snug')}>
                           Full Stack Developer • Designer • Athlete
                         </p>
                       </div>
 
                       {/* Brief Introduction */}
-                      <p className="text-xs sm:text-sm md:text-base text-neutral-400 leading-snug font-normal">
-                        I'm a <span className="text-white font-medium">Full-stack Developer</span> passionate about building <span className="text-white font-medium">impactful, user-centric web applications</span>. I love creating elegant solutions to complex problems and bringing ideas to life through code.
+                      <p className={cn(typography.body, 'leading-snug')}>
+                        I'm a <span className={typography.emphasis}>Full-stack Developer</span> passionate about building <span className={typography.emphasis}>impactful, user-centric web applications</span>. I love creating elegant solutions to complex problems and bringing ideas to life through code.
                       </p>
 
                       {/* Tech Stack */}
                       <div>
-                        <h3 className="text-sm sm:text-base md:text-lg font-medium text-white mb-2">
+                        <h3 className={cn(typography.weSubsectionTitle, 'mb-2')}>
                           Tech Stack
                         </h3>
                         <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-2.5 justify-center md:justify-start">
@@ -275,7 +277,7 @@ export default function HeroSection() {
                                   className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:scale-110" 
                                   style={{ color: tech.color }}
                                 />
-                                <span className="text-xs sm:text-sm md:text-base font-normal text-neutral-200 group-hover:text-white transition-colors">
+                                <span className={cn(typography.tag, 'group-hover:text-white transition-colors')}>
                                   {tech.name}
                                 </span>
                               </div>
