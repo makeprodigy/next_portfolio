@@ -11,13 +11,13 @@ import ScrollTracker from '@/components/ui/ScrollTracker';
 
 export default function Home() {
   const sections = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'about', label: 'About' },
-    { id: 'education', label: 'Education' },
+    { id: 'overview',        label: 'Overview'   },
+    { id: 'about',           label: 'About'      },
+    { id: 'education',       label: 'Education'  },
     { id: 'work-experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'projects',        label: 'Projects'   },
+    { id: 'skills',          label: 'Skills'     },
+    { id: 'contact',         label: 'Contact'    },
   ];
 
   return (
