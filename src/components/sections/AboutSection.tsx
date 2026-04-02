@@ -1,7 +1,6 @@
 'use client';
 
 import AnimatedContent from '@/components/ui/AnimatedContent';
-import PixelCard from '@/components/ui/PixelCard';
 import CountUp from '@/components/ui/CountUp';
 import Image from 'next/image';
 import { DottedGlowBackground } from '@/components/ui/dotted-glow-background';
@@ -139,19 +138,15 @@ export default function AboutSection() {
             delay={0.4}
           >
             <div className="relative flex flex-col justify-center items-center gap-4">
-              <PixelCard variant="blue" className="mx-auto h-[500px] w-[400px] md:h-[600px] md:w-[480px]">
-                <div className="absolute inset-0 p-2 flex items-center justify-center overflow-hidden rounded-[20px]">
-                  <div className="relative w-full h-full rounded-[15px] overflow-hidden">
-                    <Image
-                      src="/my_portrait.jpeg"
-                      alt="Pushpendra Portrait"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
-                </div>
-              </PixelCard>
+              <div className="mx-auto h-[500px] w-[400px] md:h-[600px] md:w-[480px] rounded-[20px] overflow-hidden border border-white/10 shadow-2xl relative">
+                <Image
+                  src="/my_portrait.jpeg"
+                  alt="Pushpendra Portrait"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
               
               {/* Name and Social Links */}
               <div className="flex flex-col items-center gap-3">
