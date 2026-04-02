@@ -265,14 +265,11 @@ export default function ProjectsSection() {
             >
               {/* Category Header */}
               <div className="flex-shrink-0 mb-6">
-                <div className={cn(typography.categoryNumber, "mb-3")}>
-                  {category.number}
-                </div>
                 <div className="space-y-1">
                   <h3 className={cn(typography.categoryTitle, "flex items-center gap-2")}>
                     {category.title}
                     <svg
-                      className="w-5 h-5"
+                      className="w-6 h-6"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
