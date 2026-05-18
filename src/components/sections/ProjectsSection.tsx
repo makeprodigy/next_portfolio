@@ -254,76 +254,11 @@ export default function ProjectsSection() {
           )}
         </AnimatePresence>
 
-        {/* 4 Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {projectCategories.map((category) => (
-            <div
-              key={category.id}
-              className="flex flex-col"
-              onMouseEnter={() => setHoveredCategory(category.id)}
-              onMouseLeave={() => setHoveredCategory(null)}
-            >
-              {/* Category Header */}
-              <div className="flex-shrink-0 mb-6">
-                <div className="space-y-1">
-                  <h3 className={cn(typography.categoryTitle, "flex items-center gap-2")}>
-                    {category.title}
-                    <svg
-                      className="w-6 h-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M7 17L17 7M17 7H7M17 7V17"
-                      />
-                    </svg>
-                  </h3>
-                  <p className={typography.categoryLocation}>{category.location}</p>
-                </div>
-              </div>
-
-              {/* Project Stack */}
-              <div className="flex flex-col gap-2">
-                {category.projects.map((project, index) => (
-                  <motion.div
-                    layoutId={`card-${project.title}-${id}`}
-                    key={`card-${project.title}-${id}`}
-                    onClick={() => setActive(project)}
-                    className="group relative overflow-hidden rounded-none cursor-pointer border border-neutral-800 bg-neutral-900/30 hover:bg-neutral-900/80 transition-all duration-300"
-                  >
-                    <motion.div
-                      layoutId={`image-${project.title}-${id}`}
-                      className="aspect-[16/9] overflow-hidden"
-                    >
-                      <img
-                        src={project.src}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </motion.div>
-                    <div className="p-3">
-                      <motion.h4
-                        layoutId={`title-${project.title}-${id}`}
-                        className={cn(typography.cardTitle, "mb-0.5")}
-                      >
-                        {project.title}
-                      </motion.h4>
-                      <motion.p
-                        layoutId={`description-${project.description}-${id}`}
-                        className={cn(typography.cardDescription, "line-clamp-2")}
-                      >
-                        {project.description}
-                      </motion.p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          ))}
+        {/* Updating Soon Placeholder */}
+        <div className="flex items-center justify-center py-20 border border-white/10 bg-neutral-950/60 shadow-2xl">
+          <p className="text-xl md:text-2xl font-light text-neutral-400 tracking-[0.2em] uppercase">
+            Updating Soon
+          </p>
         </div>
       </div>
     </section>

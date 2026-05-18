@@ -188,9 +188,9 @@ export default function ContactSection() {
                   )}
                 >
                   <span className="flex-1 text-left">
-                    {status === 'idle' && "Send Message"}
-                    {status === 'loading' && "Sending..."}
-                    {status === 'success' && "Message Sent"}
+                    {status === 'idle' && "Adding Functionality Soon"}
+                    {status === 'loading' && "Adding Functionality Soon..."}
+                    {status === 'success' && "Adding Functionality Soon"}
                     {status === 'error' && "Failed. Try Again"}
                   </span>
                   
