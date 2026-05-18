@@ -14,7 +14,7 @@ export default function EducationSection() {
             <p className={typography.educationCardTitle}>
               High School
             </p>
-            <div className="bg-neutral-900/80 border-2 border-neutral-600 rounded-lg px-4 py-2">
+            <div className="bg-transparent border border-white/20 rounded-none px-4 py-2">
               <p className={typography.educationScore}>98%</p>
             </div>
           </div>
@@ -23,7 +23,7 @@ export default function EducationSection() {
             Developed initial interest in programming and technology.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-neutral-900/80 rounded-xl p-4">
+            <div className="bg-transparent border border-white/10 hover:bg-white/[0.02] transition-colors rounded-none p-4">
               <p className={cn(typography.educationBodyWhite, 'mb-2')}>
                 Focus Areas
               </p>
@@ -31,7 +31,7 @@ export default function EducationSection() {
                 Science, Mathematics, Basic Computing
               </p>
             </div>
-            <div className="bg-neutral-700/80 rounded-xl p-4 transition-all duration-300 hover:shadow-lg hover:shadow-neutral-500/20">
+            <div className="bg-transparent border border-white/10 hover:bg-white/[0.02] transition-colors rounded-none p-4">
               <p className={cn(typography.educationBodyWhite, 'mb-2')}>
                 Milestones
               </p>
@@ -51,7 +51,7 @@ export default function EducationSection() {
             <p className={typography.educationCardTitle}>
               Secondary Education / Intermediate
             </p>
-            <div className="bg-neutral-900/80 border-2 border-neutral-600 rounded-lg px-4 py-2">
+            <div className="bg-transparent border border-white/20 rounded-none px-4 py-2">
               <p className={typography.educationScore}>87%</p>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function EducationSection() {
             Started exploring programming languages and web development seriously.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-neutral-900/80 rounded-xl p-4">
+            <div className="bg-transparent border border-white/10 hover:bg-white/[0.02] transition-colors rounded-none p-4">
               <p className={cn(typography.educationBodyWhite, 'mb-2')}>
                 Key Subjects
               </p>
@@ -69,7 +69,7 @@ export default function EducationSection() {
                 <li>Physics & Chemistry</li>
               </ul>
             </div>
-            <div className="bg-neutral-700/80 rounded-xl p-4 transition-all duration-300 hover:shadow-lg hover:shadow-neutral-500/20">
+            <div className="bg-transparent border border-white/10 hover:bg-white/[0.02] transition-colors rounded-none p-4">
               <p className={cn(typography.educationBodyWhite, 'mb-2')}>
                 Milestones
               </p>
@@ -90,7 +90,7 @@ export default function EducationSection() {
             <p className={typography.educationCardTitle}>
               B.Tech in Computer Science & AI
             </p>
-            <div className="bg-neutral-900/80 border-2 border-neutral-600 rounded-lg px-4 py-2">
+            <div className="bg-transparent border border-white/20 rounded-none px-4 py-2">
               <p className={typography.educationScore}>CGPA 8.1</p>
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function EducationSection() {
             Deep diving into advanced algorithms, AI/ML, and full-stack development.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-neutral-900/80 rounded-xl p-4">
+            <div className="bg-transparent border border-white/10 hover:bg-white/[0.02] transition-colors rounded-none p-4">
               <p className={cn(typography.educationBodyWhite, 'mb-2')}>
                 Core Focus
               </p>
@@ -110,7 +110,7 @@ export default function EducationSection() {
                 <li>Full-Stack Development</li>
               </ul>
             </div>
-            <div className="bg-neutral-700/80 rounded-xl p-4 transition-all duration-300 hover:shadow-lg hover:shadow-neutral-500/20">
+            <div className="bg-transparent border border-white/10 hover:bg-white/[0.02] transition-colors rounded-none p-4">
               <p className={cn(typography.educationBodyWhite, 'mb-2')}>
                 Milestones
               </p>
@@ -136,14 +136,14 @@ export default function EducationSection() {
             Continuing B.Tech program with advanced coursework and hands-on projects. 
             Actively building impactful applications and preparing for industry challenges.
           </p>
-          <div className="bg-neutral-900/60 rounded-xl p-4">
+          <div className="bg-transparent border border-white/10 rounded-none p-4 hover:bg-white/[0.02] transition-colors">
             <p className={cn(typography.educationBody, 'leading-snug')}>
               <span className={typography.emphasis}>Currently:</span> Building impactful, user-centric applications 
               and expanding expertise in AI, data science, and modern web technologies while maintaining strong focus on problem-solving and innovation.
             </p>
           </div>
           <div className={cn('mt-4 flex items-center gap-2.5', typography.educationBody, 'leading-snug')}>
-            <div className="w-2 h-2 bg-neutral-400 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-neutral-400 rounded-none animate-pulse"></div>
             <span className="font-normal">Active Development Phase</span>
           </div>
         </div>
@@ -160,7 +160,7 @@ export default function EducationSection() {
             Expected graduation with B.Tech degree in Computer Science and Artificial Intelligence. 
             Ready to make significant contributions in the tech industry and work on innovative solutions.
           </p>
-          <div className="bg-neutral-900/60 rounded-xl p-4 mb-4">
+          <div className="bg-transparent border border-white/10 rounded-none p-4 mb-4 hover:bg-white/[0.02] transition-colors">
             <p className={cn(typography.educationBodyWhite, 'mb-2')}>
               Future Goals
             </p>
@@ -185,7 +185,7 @@ export default function EducationSection() {
   ];
 
   return (
-    <div id="education" className="bg-black mx-auto">
+    <div id="education" className="bg-zinc-950 mx-auto">
       <Timeline data={educationData} />
     </div>
   );
