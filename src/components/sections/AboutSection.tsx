@@ -217,7 +217,7 @@ export default function AboutSection() {
                   
                   {/* Resume CTA */}
                   <a
-                    href="https://drive.google.com/file/d/1m9TPGTcvg8NhbSwnN4MaHK-ZyiE6UG5K/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1kcBOYDvm3c7NOLSKPSDTI63rS9dTRlkh/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group relative"
