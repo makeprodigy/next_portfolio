@@ -86,12 +86,12 @@ const ScrollTracker: React.FC<ScrollTrackerProps> = ({ sections }) => {
     >
       {/* Glassmorphic pill container */}
       <div
-        className="flex flex-col gap-1 rounded-lg px-1.5 py-2 transition-all duration-500"
+        className="flex flex-col gap-1 rounded-none px-1.5 py-2 transition-all duration-500"
         style={{
-          background: 'rgba(255,255,255,0.04)',
+          background: 'rgba(255,255,255,0.06)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255,255,255,0.08)',
+          border: '1px solid rgba(255,255,255,0.15)',
           boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
         }}
       >
@@ -107,9 +107,9 @@ const ScrollTracker: React.FC<ScrollTrackerProps> = ({ sections }) => {
               className="group relative flex items-center justify-end gap-3 py-2 transition-all duration-300"
               style={{
                 padding: isHovered ? '11px 14px' : '11px',
-                background: isActive ? 'rgba(255,255,255,0.07)' : 'transparent',
-                borderLeft: isActive ? '2px solid rgba(210,210,210,0.7)' : '2px solid transparent',
-                borderRadius: isActive ? '0 6px 6px 0' : '6px',
+                background: isActive ? 'rgba(255,255,255,0.1)' : 'transparent',
+                borderLeft: isActive ? '2px solid rgba(255,255,255,0.9)' : '2px solid transparent',
+                borderRadius: '0px',
               }}
             >
               {/* Label — slides in when hovered */}
@@ -118,8 +118,8 @@ const ScrollTracker: React.FC<ScrollTrackerProps> = ({ sections }) => {
                 style={{
                   maxWidth: isHovered ? '120px' : '0px',
                   opacity: isHovered ? 1 : 0,
-                  color: isActive ? '#e5e5e5' : 'rgba(120,120,120,0.8)',
-                  fontWeight: isActive ? 700 : 400,
+                  color: isActive ? '#ffffff' : 'rgba(255,255,255,0.6)',
+                  fontWeight: isActive ? 700 : 500,
                   transitionProperty: 'max-width, opacity',
                   transitionDuration: '350ms',
                   transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
@@ -133,7 +133,7 @@ const ScrollTracker: React.FC<ScrollTrackerProps> = ({ sections }) => {
                 <Icon
                   size={22}
                   style={{
-                    color: isActive ? '#d4d4d4' : 'rgba(100,100,100,0.7)',
+                    color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)',
                     transition: 'color 300ms, transform 300ms',
                     transform: isActive ? 'scale(1.15)' : 'scale(1)',
                     flexShrink: 0,
