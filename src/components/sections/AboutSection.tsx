@@ -3,13 +3,14 @@
 import AnimatedContent from '@/components/ui/AnimatedContent';
 import CountUp from '@/components/ui/CountUp';
 import Image from 'next/image';
-import { DottedGlowBackground } from '@/components/ui/dotted-glow-background';
+
 import { FaLinkedin, FaGithub, FaEnvelope, FaTwitter, FaFileAlt } from 'react-icons/fa';
 import { socialLinks } from '@/config/social';
 import { useState } from 'react';
 import { LinkPreview } from '@/components/ui/link-preview';
 import { typography } from '@/lib/typography';
 import { cn } from '@/lib/utils';
+import { AuroraBackground } from '@/components/ui/aurora-background';
 
 export default function AboutSection() {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -30,22 +31,6 @@ export default function AboutSection() {
     }
   };
 
-  // Color mapping for hover effects
-  const getHoverColor = (iconName: string) => {
-    switch (iconName.toLowerCase()) {
-      case 'linkedin':
-        return 'hover:bg-blue-600 hover:border-blue-500';
-      case 'github':
-        return 'hover:bg-gray-700 hover:border-gray-600';
-      case 'email':
-        return 'hover:bg-red-600 hover:border-red-500';
-      case 'twitter':
-        return 'hover:bg-sky-500 hover:border-sky-400';
-      default:
-        return 'hover:bg-gray-700 hover:border-gray-600';
-    }
-  };
-
   // Filter to only show LinkedIn, GitHub, and Email
   const displayedLinks = socialLinks.filter(link => 
     ['linkedin', 'github', 'email'].includes(link.icon?.toLowerCase() || '')
@@ -61,21 +46,10 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-20 bg-black -mt-[12.5rem] relative overflow-hidden">
-      {/* Dotted Glow Background */}
-      <DottedGlowBackground
-        gap={20}
-        radius={2.5}
-        color="rgba(100, 100, 100, 0.4)"
-        glowColor="rgba(59, 130, 246, 0.8)"
-        opacity={0.7}
-        speedMin={0.3}
-        speedMax={1.0}
-        speedScale={1.2}
-      />
-      
+    <AuroraBackground id="about" className="py-20 bg-zinc-950 dark:bg-zinc-950 -mt-[12.5rem] relative overflow-hidden">
+
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text Content */}
           <AnimatedContent
             distance={80}
@@ -88,40 +62,43 @@ export default function AboutSection() {
             threshold={0.2}
             delay={0.2}
           >
-            <h2 className={cn(typography.sectionTitle, 'mb-8')}>
+            <h2 className={cn(typography.sectionTitle, 'mb-10')}>
               ABOUT ME
             </h2>
-            <div className="space-y-4 leading-snug">
-              <p className={cn(typography.body, 'leading-snug')}>
-                I'm a <span className={typography.emphasis}>Full-stack Developer</span> experienced in building <span className={typography.emphasis}>impactful, user-centric web applications</span>. I love creating elegant solutions to complex problems and bringing ideas to life through code.
-              </p>
-              
-              <p className={cn(typography.body, 'leading-snug')}>
-                With expertise in <span className={typography.emphasis}>TypeScript/JavaScript</span>, <span className={typography.emphasis}>Next.js, React</span>, and modern <span className={typography.emphasis}>CSS</span>, I craft seamless frontend experiences and I'm proficient in <span className={typography.emphasis}>Node.js</span>, <span className={typography.emphasis}>Express</span>, <span className={typography.emphasis}>Python</span>, and both <span className={typography.emphasis}>SQL/MySQL</span> and <span className={typography.emphasis}>NoSQL/MongoDB</span> databases, with a strong foundation in <span className={typography.emphasis}>data structures and algorithms</span>.
-              </p>
+            <div className="space-y-8 leading-snug">
+              <div className="space-y-6">
+                <p className={cn(typography.body, 'text-neutral-400')}>
+                  I'm a curiosity-driven problem solver who finds genuine joy in untangling complex challenges—for me, the process is just as rewarding as crossing the finish line.
+                </p>
+                <p className={cn(typography.body, 'text-neutral-400')}>
+                  I hold my work to a high standard, whether that means architecting clean, maintainable code or ensuring the final product makes intuitive sense to its users. I thrive both independently and in teams, and I'm always the person asking 'but why does it work this way?' before accepting the status quo.
+                </p>
+                <p className={cn(typography.body, 'text-neutral-400')}>
+                  I'm constantly learning—not out of obligation, but because stagnation genuinely bothers me. Every new project is an opportunity to dive deeper and build something better.
+                </p>
+              </div>
 
-              <p className={cn(typography.body, 'leading-snug')}>
-                I also work with <span className={typography.emphasis}>data science and AI tools</span>, leveraging <span className={typography.emphasis}>NumPy</span> and <span className={typography.emphasis}>Pandas</span> for data analysis and manipulation, enabling me to build intelligent, data-driven applications.
-              </p>
-
-              <p className={cn(typography.body, 'leading-snug')}>
-                I have experience in <span className={typography.emphasis}>UI/UX design</span> using <span className={typography.emphasis}>Figma</span> and <span className={typography.emphasis}>Framer</span>. I work extensively with modern UI libraries including <span className={typography.emphasis}>ShadCN</span>, <span className={typography.emphasis}>Material UI</span>, <span className={typography.emphasis}>React Bits</span>, and <span className={typography.emphasis}>Aceternity</span>. My focus is on building <span className={typography.emphasis}>scalable, high-impact solutions</span> that deliver exceptional user experiences.
-              </p>
-
-              <p className={cn(typography.body, 'leading-snug')}>
-                When I'm not coding, you can find me staying active as an athlete, exploring new design trends, or contributing to open-source projects.
-              </p>
-
-              {/* <div className="flex flex-wrap gap-4 pt-4">
-                <div className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700">
-                  <span className="text-sm font-semibold text-white">Location:</span>
-                  <span className="text-sm text-gray-300 ml-2">Your Location</span>
+              <div className="pt-6 border-t border-white/10">
+                <h3 className="text-sm font-semibold text-white uppercase tracking-widest mb-6">Technical Arsenal</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-2">Languages</h4>
+                    <p className="text-base text-neutral-200 leading-relaxed">Python, TypeScript, JavaScript, SQL, HTML, CSS</p>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-2">Frontend & Backend</h4>
+                    <p className="text-base text-neutral-200 leading-relaxed">React, Next.js, Node.js, Express.js, REST APIs, Tailwind CSS, JWT, OAuth 2.0</p>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-2">Databases & Data</h4>
+                    <p className="text-base text-neutral-200 leading-relaxed">MongoDB, PostgreSQL, MySQL, Prisma ORM, NumPy, Pandas, Scikit-learn, Tableau, MS Excel, Looker, Google Studio</p>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-2">System Design</h4>
+                    <p className="text-base text-neutral-200 leading-relaxed">DSA, OOP, SOLID, Design Patterns, Agile, Git, GitHub Actions</p>
+                  </div>
                 </div>
-                <div className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700">
-                  <span className="text-sm font-semibold text-white">Experience:</span>
-                  <span className="text-sm text-gray-300 ml-2">X+ Years</span>
-                </div>
-              </div> */}
+              </div>
             </div>
           </AnimatedContent>
 
@@ -137,48 +114,59 @@ export default function AboutSection() {
             threshold={0.2}
             delay={0.4}
           >
-            <div className="relative flex flex-col justify-center items-center gap-4">
-              <div className="mx-auto h-[500px] w-[400px] md:h-[600px] md:w-[480px] rounded-[20px] overflow-hidden border border-white/10 shadow-2xl relative">
+            <div className="relative flex flex-col justify-center items-center gap-8 mt-12 md:mt-0">
+              <div className="mx-auto h-[450px] w-[350px] md:h-[550px] md:w-[420px] rounded-none overflow-hidden border border-white/10 relative group bg-zinc-900">
+                {/* Sharp corner accents */}
+                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white/60 z-10 transition-transform duration-500 group-hover:-translate-x-1 group-hover:-translate-y-1" />
+                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white/60 z-10 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white/60 z-10 transition-transform duration-500 group-hover:-translate-x-1 group-hover:translate-y-1" />
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white/60 z-10 transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1" />
+
                 <Image
                   src="/my_portrait.jpeg"
                   alt="Pushpendra Portrait"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   priority
                 />
               </div>
               
               {/* Name and Social Links */}
-              <div className="flex flex-col items-center gap-3">
-                <h3 className={typography.subsectionTitleWhite}>
-                  Pushpendra S. Parihar
-                </h3>
+              <div className="flex flex-col items-center gap-5 w-full max-w-[420px]">
+                <div className="flex w-full items-center justify-between border-b border-white/10 pb-4">
+                  <h3 className="text-xl font-semibold text-white tracking-wide">
+                    Pushpendra S. Parihar
+                  </h3>
+                  <span className="text-xs text-neutral-500 uppercase tracking-widest">
+                    Developer
+                  </span>
+                </div>
                 
                 {/* Social Media Icons */}
-                <div className="flex gap-4">
+                <div className="flex gap-4 w-full justify-between">
                   {displayedLinks.map((link) => {
                     const Icon = getIcon(link.icon || '');
-                    const hoverColor = getHoverColor(link.icon || '');
                     const isEmail = link.icon?.toLowerCase() === 'email';
                     const hasPreview = ['github', 'linkedin'].includes(link.icon?.toLowerCase() || '');
                     
+                    const btnClass = "w-12 h-12 rounded-none border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black group relative bg-zinc-950";
+                    const iconClass = "w-5 h-5 text-neutral-400 group-hover:text-black transition-colors";
+
                     if (isEmail) {
                       return (
                         <button
                           key={link.label}
                           onClick={() => handleEmailClick(link.href)}
-                          className="group relative"
+                          className={btnClass}
                           aria-label={link.label}
                         >
-                          <div className={`w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 flex items-center justify-center transition-all duration-100 ${hoverColor}`}>
-                            <Icon className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" />
-                          </div>
+                          <Icon className={iconClass} />
                           
                           {/* Tooltip */}
-                          <div className={cn('absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none', typography.tooltip)}>
+                          <div className={cn('absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1 bg-white text-black text-xs font-medium uppercase tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none')}>
                             {copiedEmail ? 'Copied!' : 'Copy email'}
                             <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
-                              <div className="border-4 border-transparent border-t-gray-900" />
+                              <div className="border-4 border-transparent border-t-white" />
                             </div>
                           </div>
                         </button>
@@ -190,11 +178,9 @@ export default function AboutSection() {
                         <LinkPreview
                           key={link.label}
                           url={link.href}
-                          className="group relative"
+                          className={btnClass}
                         >
-                          <div className={`w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 flex items-center justify-center transition-all duration-100 ${hoverColor} cursor-pointer`}>
-                            <Icon className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" />
-                          </div>
+                          <Icon className={iconClass} />
                         </LinkPreview>
                       );
                     }
@@ -205,12 +191,10 @@ export default function AboutSection() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group relative"
+                        className={btnClass}
                         aria-label={link.label}
                       >
-                        <div className={`w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 flex items-center justify-center transition-all duration-100 ${hoverColor}`}>
-                          <Icon className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" />
-                        </div>
+                        <Icon className={iconClass} />
                       </a>
                     );
                   })}
@@ -220,55 +204,62 @@ export default function AboutSection() {
                     href="https://drive.google.com/file/d/1kcBOYDvm3c7NOLSKPSDTI63rS9dTRlkh/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative"
+                    className="flex-1 flex items-center justify-center gap-3 rounded-none border border-white/10 transition-all duration-300 hover:bg-white hover:text-black group bg-zinc-950 px-4"
                     aria-label="View Resume"
                   >
-                    <div className="w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 flex items-center justify-center transition-all duration-100 hover:bg-green-600 hover:border-green-500">
-                      <FaFileAlt className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" />
-                    </div>
-                    
-                    {/* Tooltip */}
-                    <div className={cn('absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none', typography.tooltip)}>
-                      View Resume
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
-                        <div className="border-4 border-transparent border-t-gray-900" />
-                      </div>
-                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-widest text-neutral-300 group-hover:text-black transition-colors">Resume</span>
+                    <FaFileAlt className="w-4 h-4 text-neutral-400 group-hover:text-black transition-colors" />
                   </a>
                 </div>
               </div>
             </div>
           </AnimatedContent>
         </div>
-
-        {/* Stats or Highlights */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24">
-          <div className="text-center">
-            <div className={cn(typography.statNumber, 'mb-3')}>
-              <CountUp to={100} duration={2.5} />+
-            </div>
-            <div className={typography.statLabel}>Problems Solved on LeetCode</div>
-          </div>
-          <div className="text-center">
-            <div className={cn(typography.statNumber, 'mb-2')}>
-              <CountUp to={7} duration={2} />+
-            </div>
-            <div className={typography.statLabel}>Projects</div>
-          </div>
-          <div className="text-center">
-            <div className={cn(typography.statNumber, 'mb-2')}>
-              <CountUp to={15} duration={2.5} />+
-            </div>
-            <div className={typography.statLabel}>Technologies Learned</div>
-          </div>
-          <div className="text-center">
-            <div className={cn(typography.statNumber, 'mb-2')}>
-              <CountUp to={1} duration={1.5} />
-            </div>
-            <div className={typography.statLabel}>Internship</div>
-          </div>
-        </div>  
       </div>
-    </section>
+
+      {/* Stats Ribbon (Full Width) */}
+      <AnimatedContent
+        distance={40}
+        direction="vertical"
+        reverse={false}
+        duration={0.8}
+        ease="power3.out"
+        initialOpacity={0}
+        animateOpacity
+        threshold={0.1}
+        delay={0.6}
+      >
+        <div className="mt-32 w-full border-t border-b border-white/10 bg-zinc-950/80 backdrop-blur-sm relative z-20">
+          <div className="container mx-auto px-4 md:px-8 max-w-6xl py-10 relative">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x divide-white/10">
+              <div className="text-center flex flex-col items-center justify-center px-4 group">
+                <div className="text-5xl md:text-6xl font-semibold mb-3 text-white">
+                  <CountUp to={200} duration={2.5} />+
+                </div>
+                <div className="text-xs text-neutral-500 uppercase tracking-widest font-medium">Problems Solved (LC & CF)</div>
+              </div>
+              <div className="text-center flex flex-col items-center justify-center px-4 group">
+                <div className="text-5xl md:text-6xl font-semibold mb-3 text-white">
+                  <CountUp to={1165} duration={2.5} />
+                </div>
+                <div className="text-xs text-neutral-500 uppercase tracking-widest font-medium">Max Rating (Codeforces)</div>
+              </div>
+              <div className="text-center flex flex-col items-center justify-center px-4 group">
+                <div className="text-5xl md:text-6xl font-semibold mb-3 text-white">
+                  <CountUp to={7} duration={2} />+
+                </div>
+                <div className="text-xs text-neutral-500 uppercase tracking-widest font-medium">Projects</div>
+              </div>
+              <div className="text-center flex flex-col items-center justify-center px-4 group">
+                <div className="text-5xl md:text-6xl font-semibold mb-3 text-white">
+                  <CountUp to={1} duration={1.5} />
+                </div>
+                <div className="text-xs text-neutral-500 uppercase tracking-widest font-medium">Internship</div>
+              </div>
+            </div>  
+          </div>
+        </div>
+      </AnimatedContent>
+    </AuroraBackground>
   );
 }
