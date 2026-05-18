@@ -142,7 +142,7 @@ export default function ProjectsSection() {
   useOutsideClick(ref, () => setActive(null));
 
   return (
-    <section id="projects" className="py-20 bg-black min-h-screen">
+    <section id="projects" className="py-20 bg-zinc-950 min-h-screen">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         <h2 className={cn(typography.sectionTitle, "mb-12")}>
           PROJECTS
@@ -156,7 +156,7 @@ export default function ProjectsSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black/80 h-full w-full z-[100]"
+                className="fixed inset-0 bg-zinc-950/80 h-full w-full z-[100]"
               />
               <div className="fixed inset-0 grid place-items-center z-[101]">
                 <motion.button
@@ -165,7 +165,7 @@ export default function ProjectsSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, transition: { duration: 0.05 } }}
-                  className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-neutral-800 rounded-full h-6 w-6 z-[102]"
+                  className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-neutral-800 rounded-none h-6 w-6 z-[102]"
                   onClick={() => setActive(null)}
                 >
                   <CloseIcon />
@@ -173,7 +173,7 @@ export default function ProjectsSection() {
                 <motion.div
                   layoutId={`card-${active.title}-${id}`}
                   ref={ref}
-                  className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-neutral-900 sm:rounded-3xl overflow-hidden border border-neutral-800"
+                  className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-neutral-900 rounded-none overflow-hidden border border-neutral-800"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
@@ -184,7 +184,7 @@ export default function ProjectsSection() {
                       height={320}
                       src={active.src}
                       alt={active.title}
-                      className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-center"
+                      className="w-full h-80 lg:h-80 rounded-none object-cover object-center"
                     />
                   </motion.div>
 
@@ -209,7 +209,7 @@ export default function ProjectsSection() {
                         href={active.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={cn("px-4 py-3 rounded-full bg-neutral-800 hover:bg-neutral-700 text-white flex items-center gap-2 border border-neutral-700 shrink-0", typography.button)}
+                        className={cn("px-4 py-3 rounded-none bg-neutral-800 hover:bg-neutral-700 text-white flex items-center gap-2 border border-neutral-700 shrink-0", typography.button)}
                         onClick={(e) => e.stopPropagation()}
                       >
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -233,7 +233,7 @@ export default function ProjectsSection() {
                               {active.stack.map((tech, index) => (
                                 <span
                                   key={index}
-                                  className={cn("px-3 py-1 bg-neutral-800 border border-neutral-700 rounded-full", typography.tag)}
+                                  className={cn("px-3 py-1 bg-neutral-800 border border-neutral-700 rounded-none", typography.tag)}
                                 >
                                   {tech}
                                 </span>
@@ -293,7 +293,7 @@ export default function ProjectsSection() {
                     layoutId={`card-${project.title}-${id}`}
                     key={`card-${project.title}-${id}`}
                     onClick={() => setActive(project)}
-                    className="group relative overflow-hidden rounded-lg cursor-pointer border border-neutral-800 bg-neutral-900/30 hover:bg-neutral-900/80 transition-all duration-300"
+                    className="group relative overflow-hidden rounded-none cursor-pointer border border-neutral-800 bg-neutral-900/30 hover:bg-neutral-900/80 transition-all duration-300"
                   >
                     <motion.div
                       layoutId={`image-${project.title}-${id}`}
