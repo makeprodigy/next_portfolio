@@ -36,7 +36,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
-      className="w-full bg-black dark:bg-neutral-950 font-sans md:px-10"
+      className="w-full bg-zinc-950 dark:bg-zinc-950 font-sans md:px-10"
       ref={containerRef}
     >
       <div className="max-w-6xl mx-auto pt-12 pb-6 px-4 md:px-8">
@@ -59,12 +59,12 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               className={`flex justify-start md:gap-2 ${index === 0 ? 'pt-8 md:pt-12' : 'pt-8 md:pt-24'}`}
             >
               <div className="flex flex-col md:flex-row z-40 items-center md:sticky md:top-40 self-start max-w-xs lg:max-w-sm md:w-full relative">
-                <div className={`h-10 w-10 shrink-0 absolute md:relative left-0 md:left-0 rounded-full flex items-center justify-center ${
+                <div className={`h-10 w-10 shrink-0 absolute md:relative left-0 md:left-0 rounded-none flex items-center justify-center ${
                   isFuture ? 'bg-neutral-800/40' : 
                   isCurrent ? 'bg-purple-500/30 dark:bg-purple-600/30 shadow-lg shadow-purple-500/50 animate-pulse' :
                   'bg-gradient-to-br from-blue-500/30 to-purple-500/30 dark:from-blue-600/30 dark:to-purple-600/30'
                 }`}>
-                  <div className={`h-4 w-4 rounded-full border-2 ${
+                  <div className={`h-4 w-4 rounded-none border-2 ${
                     isFuture ? 'bg-neutral-700 border-neutral-600' : 
                     isCurrent ? 'bg-purple-500 dark:bg-purple-600 border-purple-400 dark:border-purple-500 shadow-lg shadow-purple-400/50' :
                     'bg-gradient-to-br from-blue-500 to-purple-500 dark:from-blue-600 dark:to-purple-600 border-blue-400 dark:border-purple-500'
@@ -103,7 +103,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
+            className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-none"
           />
         </div>
       </div>
