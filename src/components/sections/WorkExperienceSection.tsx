@@ -15,6 +15,7 @@ interface WorkExperience {
   type: string;
   summary: string;
   companyInfo?: string;
+  link?: string;
   responsibilities: string[];
   technologies?: string[];
 }
@@ -28,6 +29,7 @@ const experiences: WorkExperience[] = [
     duration: "Sep 2025 - Dec 2025",
     location: "Remote",
     type: "Internship",
+    link: "https://gamearena.tech/",
     summary: "Led a UI/UX revamp of the platform, improving usability and fixing cross-device responsiveness issues.",
     companyInfo: "Early-stage startup incubated in IIM Bangalore",
     responsibilities: [
@@ -117,6 +119,21 @@ export default function WorkExperienceSection() {
                       </div>
                       <span className="font-medium text-sm">{experience.location}</span>
                     </div>
+                    {experience.link && (
+                      <div className="flex items-center gap-3 text-neutral-400 group-hover:text-neutral-300 transition-colors">
+                        <div className="w-7 h-7 rounded-none bg-white/5 flex items-center justify-center border border-white/5">
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                          </svg>
+                        </div>
+                        <a href={experience.link} target="_blank" rel="noopener noreferrer" className="font-medium text-sm hover:text-blue-400 hover:underline underline-offset-4 transition-all flex items-center gap-1.5">
+                          Website
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
