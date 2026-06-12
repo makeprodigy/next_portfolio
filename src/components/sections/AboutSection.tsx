@@ -201,7 +201,7 @@ export default function AboutSection() {
                   
                   {/* Resume CTA */}
                   <a
-                    href="https://drive.google.com/file/d/1jJUB4BKT6tbZEcEzT5nAygadlDDXAgrJ/view?usp=sharing"
+                    href="https://drive.google.com/file/d/150Zo0NjlUTuDkr9Zfjw7Me4tOaHqJDZ8/view?usp=drive_link"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-3 rounded-none border border-white/10 transition-all duration-300 hover:bg-white hover:text-black group bg-zinc-950 px-4"

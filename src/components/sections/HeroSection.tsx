@@ -244,7 +244,7 @@ export default function HeroSection() {
                         
                         {/* Resume CTA */}
                         <a
-                          href="https://drive.google.com/file/d/1jJUB4BKT6tbZEcEzT5nAygadlDDXAgrJ/view?usp=sharing"
+                          href="https://drive.google.com/file/d/150Zo0NjlUTuDkr9Zfjw7Me4tOaHqJDZ8/view?usp=drive_link"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center justify-center gap-3 px-6 py-3 border border-white/20 hover:bg-white text-white hover:text-black text-xs font-semibold uppercase tracking-widest rounded-none transition-all flex-shrink-0 group"
