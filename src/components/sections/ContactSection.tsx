@@ -84,13 +84,21 @@ export default function ContactSection() {
                 <div className="flex items-center gap-6">
                   {socialLinks.filter(link => link.label.toLowerCase() !== 'twitter').map((link) => {
                     const Icon = getIcon(link.label);
+                    
+                    const brandColors: Record<string, string> = {
+                      github: 'text-white',
+                      linkedin: 'text-[#0A66C2]',
+                      email: 'text-[#EA4335]',
+                    };
+                    const colorClass = brandColors[link.label.toLowerCase()] || 'text-neutral-500';
+                    
                     return (
                       <a
                         key={link.label}
                         href={link.label.toLowerCase() === 'email' ? emailLink : link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-neutral-500 hover:text-white transition-colors duration-300"
+                        className={cn("hover:text-white transition-colors duration-300", colorClass)}
                         aria-label={link.label}
                       >
                         <Icon className="w-7 h-7" />

@@ -66,38 +66,16 @@ export default function AboutSection() {
               ABOUT ME
             </h2>
             <div className="space-y-8 leading-snug">
-              <div className="space-y-6">
-                <p className={cn(typography.body, 'text-neutral-400')}>
+              <div className="space-y-6 md:space-y-8">
+                <p className="text-lg md:text-xl lg:text-[22px] leading-relaxed text-neutral-300 font-light tracking-wide">
                   I'm a curiosity-driven problem solver who finds genuine joy in untangling complex challenges—for me, the process is just as rewarding as crossing the finish line.
                 </p>
-                <p className={cn(typography.body, 'text-neutral-400')}>
+                <p className="text-lg md:text-xl lg:text-[22px] leading-relaxed text-neutral-300 font-light tracking-wide">
                   I hold my work to a high standard, whether that means architecting clean, maintainable code or ensuring the final product makes intuitive sense to its users. I thrive both independently and in teams, and I'm always the person asking 'but why does it work this way?' before accepting the status quo.
                 </p>
-                <p className={cn(typography.body, 'text-neutral-400')}>
+                <p className="text-lg md:text-xl lg:text-[22px] leading-relaxed text-neutral-300 font-light tracking-wide">
                   I'm constantly learning—not out of obligation, but because stagnation genuinely bothers me. Every new project is an opportunity to dive deeper and build something better.
                 </p>
-              </div>
-
-              <div className="pt-6 border-t border-white/10">
-                <h3 className="text-sm font-semibold text-white uppercase tracking-widest mb-6">Technical Arsenal</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-2">Languages</h4>
-                    <p className="text-base text-neutral-200 leading-relaxed">Python, TypeScript, JavaScript, SQL, HTML, CSS</p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-2">Frontend & Backend</h4>
-                    <p className="text-base text-neutral-200 leading-relaxed">React, Next.js, Node.js, Express.js, REST APIs, Tailwind CSS, JWT, OAuth 2.0</p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-2">Databases & Data</h4>
-                    <p className="text-base text-neutral-200 leading-relaxed">MongoDB, PostgreSQL, MySQL, Prisma ORM, NumPy, Pandas, Scikit-learn, Tableau, MS Excel, Looker, Google Studio</p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-neutral-400 uppercase tracking-widest mb-2">System Design</h4>
-                    <p className="text-base text-neutral-200 leading-relaxed">DSA, OOP, SOLID, Design Patterns, Agile, Git, GitHub Actions</p>
-                  </div>
-                </div>
               </div>
             </div>
           </AnimatedContent>
@@ -149,8 +127,16 @@ export default function AboutSection() {
                     const isEmail = link.icon?.toLowerCase() === 'email';
                     const hasPreview = ['github', 'linkedin'].includes(link.icon?.toLowerCase() || '');
                     
+                    const brandColors: Record<string, string> = {
+                      github: 'text-white',
+                      linkedin: 'text-[#0A66C2]',
+                      email: 'text-[#EA4335]',
+                      twitter: 'text-[#1DA1F2]',
+                    };
+                    const colorClass = brandColors[link.icon?.toLowerCase() || ''] || 'text-neutral-400';
+                    
                     const btnClass = "w-12 h-12 rounded-none border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black group relative bg-zinc-950";
-                    const iconClass = "w-5 h-5 text-neutral-400 group-hover:text-black transition-colors";
+                    const iconClass = cn("w-5 h-5 transition-colors group-hover:!text-black", colorClass);
 
                     if (isEmail) {
                       return (
@@ -208,7 +194,7 @@ export default function AboutSection() {
                     aria-label="View Resume"
                   >
                     <span className="text-xs font-semibold uppercase tracking-widest text-neutral-300 group-hover:text-black transition-colors">Resume</span>
-                    <FaFileAlt className="w-4 h-4 text-neutral-400 group-hover:text-black transition-colors" />
+                    <FaFileAlt className="w-4 h-4 text-[#10B981] group-hover:!text-black transition-colors" />
                   </a>
                 </div>
               </div>
@@ -240,7 +226,7 @@ export default function AboutSection() {
               </div>
               <div className="text-center flex flex-col items-center justify-center px-4 group">
                 <div className="text-5xl md:text-6xl font-semibold mb-3 text-white">
-                  <CountUp to={1165} duration={2.5} />
+                  <CountUp to={1248} duration={2.5} />
                 </div>
                 <div className="text-xs text-neutral-500 uppercase tracking-widest font-medium">Max Rating (Codeforces)</div>
               </div>

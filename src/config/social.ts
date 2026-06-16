@@ -7,6 +7,6 @@ export interface SocialLink {
 export const socialLinks: SocialLink[] = [
   { label: 'GitHub', href: 'https://github.com/makeprodigy', icon: 'github' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/pushpendra-parihar2025/', icon: 'linkedin' },
-  { label: 'Twitter', href: 'https://twitter.com/yourusername', icon: 'twitter' },
+
   { label: 'Email', href: 'mailto:payneparihar13@gmail.com', icon: 'email' },
 ];

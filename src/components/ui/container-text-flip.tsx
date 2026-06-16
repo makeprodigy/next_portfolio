@@ -74,11 +74,11 @@ export function ContainerTextFlip({
           duration: animationDuration / 1000,
           ease: "easeInOut",
         }}
-        className={cn("inline-block", textClassName)}
+        className={cn("inline-block whitespace-nowrap", textClassName)}
         ref={textRef}
         layoutId={`word-div-${words[currentWordIndex]}-${id}`}
       >
-        <motion.div className="inline-block">
+        <motion.div className="inline-block whitespace-nowrap">
           {words[currentWordIndex].split("").map((letter, index) => (
             <motion.span
               key={index}

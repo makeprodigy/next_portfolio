@@ -23,6 +23,7 @@ import {
   SiPrisma,
   SiTailwindcss
 } from 'react-icons/si';
+import { PiGraduationCap } from 'react-icons/pi';
 import { useState } from 'react';
 import { typography } from '@/lib/typography';
 import { cn } from '@/lib/utils';
@@ -183,13 +184,21 @@ export default function HeroSection() {
                       </div>
 
                       {/* Social Links */}
-                      <div className="flex gap-4 justify-center md:justify-start w-full flex-wrap">
+                      <div className="flex gap-4 justify-center w-full flex-wrap">
                         {displayedLinks.map((link) => {
                           const Icon = getIcon(link.icon || '');
                           const isEmail = link.icon?.toLowerCase() === 'email';
                           
+                          const brandColors: Record<string, string> = {
+                            github: 'text-white',
+                            linkedin: 'text-[#0A66C2]',
+                            email: 'text-[#EA4335]',
+                            twitter: 'text-[#1DA1F2]',
+                          };
+                          const colorClass = brandColors[link.icon?.toLowerCase() || ''] || 'text-neutral-400';
+                          
                           const btnClass = "w-11 h-11 rounded-none border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white group relative bg-transparent hover:text-black hover:border-white shadow-sm hover:shadow-white/20 hover:-translate-y-1";
-                          const iconClass = "w-5 h-5 text-neutral-400 group-hover:text-black transition-colors";
+                          const iconClass = cn("w-5 h-5 transition-colors group-hover:!text-black", colorClass);
 
                           if (isEmail) {
                             return (
@@ -249,13 +258,13 @@ export default function HeroSection() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center justify-center gap-3 px-6 py-3 border border-white/20 hover:bg-white text-white hover:text-black text-xs font-semibold uppercase tracking-widest rounded-none transition-all flex-shrink-0 group"
                         >
-                          <FaFileAlt className="w-4 h-4 group-hover:text-black transition-colors" />
+                          <FaFileAlt className="w-4 h-4 text-[#10B981] group-hover:!text-black transition-colors" />
                           <span>Resume</span>
                         </a>
                       </div>
 
                       {/* Row 2: Intro */}
-                      <div className="bg-transparent border-l-2 border-white/30 pl-6 py-2">
+                      <div className="bg-transparent py-2">
                         <p className={cn(typography.body, 'text-md md:text-xl leading-relaxed text-left text-neutral-400')}>
                           I'm a <span className="text-white font-medium">Full-stack Developer</span> passionate about building <span className="text-white font-medium">impactful, user-centric web applications</span>. I craft elegant solutions to complex problems and bring ideas to life through code.
                         </p>
@@ -268,9 +277,7 @@ export default function HeroSection() {
                           <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/0 group-hover:border-white/50 transition-colors duration-300" />
                           <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-2">
-                              <svg className="w-5 h-5 text-neutral-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0-6l-3.5 2M12 20l-3.5-2M12 20l3.5-2" />
-                              </svg>
+                              <PiGraduationCap className="w-5 h-5 text-neutral-500 flex-shrink-0" />
                               <span className="text-xs font-semibold tracking-widest text-neutral-500 uppercase">Education</span>
                             </div>
                             <span className="text-xs font-semibold text-white bg-white/10 px-2 py-1 rounded-none uppercase tracking-widest border border-white/10">CGPA 8.1</span>
@@ -313,7 +320,7 @@ export default function HeroSection() {
                                 className="group flex items-center gap-2 px-3 py-2 bg-transparent hover:bg-white/5 rounded-none border border-white/10 hover:border-white/30 transition-all duration-200"
                               >
                                 <Icon
-                                  className="w-4 h-4 transition-transform group-hover:scale-110 grayscale group-hover:grayscale-0"
+                                  className="w-4 h-4 transition-transform group-hover:scale-110"
                                   style={{ color: tech.color }}
                                 />
                                 <span className="text-xs tracking-widest uppercase text-neutral-400 group-hover:text-white transition-colors font-medium">

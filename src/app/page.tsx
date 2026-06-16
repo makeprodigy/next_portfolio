@@ -29,7 +29,7 @@ export default function Home() {
         <StaggeredMenu
           isFixed
           menuButtonColor="#ffffff"
-          openMenuButtonColor="#111111"
+          openMenuButtonColor="#ffffff"
         />
       </div>
       

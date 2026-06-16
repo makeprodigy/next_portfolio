@@ -104,12 +104,12 @@ const ScrollTracker: React.FC<ScrollTrackerProps> = ({ sections }) => {
               key={section.id}
               onClick={() => handleSectionClick(section.id)}
               aria-label={`Navigate to ${section.label}`}
-              className="group relative flex items-center justify-end gap-3 py-2 transition-all duration-300"
+              className="group relative flex items-center justify-end py-2 transition-all duration-300"
               style={{
-                padding: isHovered ? '11px 14px' : '11px',
+                padding: isHovered ? '11px 16px' : '10px',
+                gap: isHovered ? '12px' : '0px',
                 background: isActive ? 'rgba(255,255,255,0.1)' : 'transparent',
-                borderLeft: isActive ? '2px solid rgba(255,255,255,0.9)' : '2px solid transparent',
-                borderRadius: '0px',
+                borderRadius: '8px',
               }}
             >
               {/* Label — slides in when hovered */}
