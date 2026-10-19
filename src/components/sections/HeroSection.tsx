@@ -287,7 +287,7 @@ export default function HeroSection() {
                       {/* Row 2: Intro Summary */}
                       <div className="bg-transparent py-2">
                         <p className={cn(typography.body, 'text-base sm:text-lg md:text-xl leading-relaxed text-left text-neutral-300')}>
-                          I'm a <span className="text-white font-medium">Software Developer &amp; AI Engineer</span> specializing in <span className="text-white font-medium">distributed systems, intelligent AI applications</span>, and scalable web platforms. From architecting asynchronous worker queues and resilient backend APIs to engineering RAG workflows and autonomous agent pipelines, I build high-throughput production systems grounded in strong algorithmic problem solving.
+                          I'm a <span className="text-white font-medium">Software Developer &amp; AI Engineer</span> passionate about building <span className="text-white font-medium">scalable web applications and intelligent AI solutions</span>. From developing full-stack platforms with Next.js, FastAPI, and Python to integrating LLM workflows and optimizing backend performance, I focus on crafting clean, user-centric software backed by strong algorithmic problem solving.
                         </p>
                       </div>
 
