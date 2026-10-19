@@ -33,10 +33,26 @@ const ScrollTracker: React.FC<ScrollTrackerProps> = ({ sections }) => {
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const isClickScrollingRef = useRef(false);
+  const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      if (isClickScrollingRef.current) return;
+
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const scrollHeight = document.documentElement.scrollHeight;
+
+      // Bottom of the page: activate the last section (Contact)
+      if (scrollY + windowHeight >= scrollHeight - 60) {
+        if (sections.length > 0) {
+          setActiveSection(sections[sections.length - 1].id);
+        }
+        return;
+      }
+
+      const scrollPosition = scrollY + windowHeight * 0.45;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i].id);
@@ -52,7 +68,10 @@ const ScrollTracker: React.FC<ScrollTrackerProps> = ({ sections }) => {
 
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+    };
   }, [sections]);
 
   // Animate in on mount
@@ -71,6 +90,13 @@ const ScrollTracker: React.FC<ScrollTrackerProps> = ({ sections }) => {
   }, []);
 
   const handleSectionClick = (sectionId: string) => {
+    setActiveSection(sectionId);
+    isClickScrollingRef.current = true;
+    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+    clickTimeoutRef.current = setTimeout(() => {
+      isClickScrollingRef.current = false;
+    }, 1000);
+
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth', block: 'start' });
