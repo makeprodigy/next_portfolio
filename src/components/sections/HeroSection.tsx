@@ -8,20 +8,21 @@ import { ContainerTextFlip } from '@/components/ui/container-text-flip';
 import { BackgroundBeams } from '@/components/ui/background-beams';
 import Image from 'next/image';
 import { socialLinks } from '@/config/social';
-import { FaLinkedin, FaGithub, FaEnvelope, FaTwitter, FaFileAlt } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope, FaTwitter, FaFileAlt, FaPaperPlane } from 'react-icons/fa';
 import { 
   SiTypescript, 
-  SiJavascript, 
   SiReact, 
   SiNextdotjs, 
   SiNodedotjs, 
-  SiExpress,
   SiPython, 
   SiMongodb, 
   SiPostgresql,
-  SiMysql,
-  SiPrisma,
-  SiTailwindcss
+  SiTailwindcss,
+  SiPytorch,
+  SiFastapi,
+  SiDocker,
+  SiRedis,
+  SiGooglegemini,
 } from 'react-icons/si';
 import { PiGraduationCap } from 'react-icons/pi';
 import { useState } from 'react';
@@ -31,19 +32,19 @@ import { cn } from '@/lib/utils';
 export default function HeroSection() {
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  // Tech stack icons with colors
+  // Tech stack icons representing Software Development & AI Engineering
   const techStack = [
-    { icon: SiPython, name: 'Python', color: '#3776AB' },
+    { icon: SiPython, name: 'Python', color: '#38BDF8' },
+    { icon: SiPytorch, name: 'PyTorch', color: '#EE4C2C' },
+    // { icon: SiGooglegemini, name: 'Gemini AI', color: '#8E75FF' },
+    { icon: SiFastapi, name: 'FastAPI', color: '#009688' },
     { icon: SiTypescript, name: 'TypeScript', color: '#3178C6' },
-    { icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E' },
-    { icon: SiReact, name: 'React', color: '#61DAFB' },
     { icon: SiNextdotjs, name: 'Next.js', color: '#FFFFFF' },
+    { icon: SiReact, name: 'React', color: '#61DAFB' },
     { icon: SiNodedotjs, name: 'Node.js', color: '#339933' },
-    { icon: SiExpress, name: 'Express.js', color: '#FFFFFF' },
-    { icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
+    { icon: SiRedis, name: 'Redis', color: '#DC382D' },
+    { icon: SiDocker, name: 'Docker', color: '#2496ED' },
     { icon: SiPostgresql, name: 'PostgreSQL', color: '#4169E1' },
-    { icon: SiMysql, name: 'MySQL', color: '#4479A1' },
-    { icon: SiPrisma, name: 'Prisma', color: '#2D3748' },
     { icon: SiTailwindcss, name: 'Tailwind CSS', color: '#06B6D4' },
   ];
 
@@ -101,22 +102,21 @@ export default function HeroSection() {
       {/* Container Scroll Animation */}
       <div className="relative z-10">
         <AnimatedContent
-          distance={150}
+          distance={40}
           direction="vertical"
           reverse={false}
-          duration={2.0}
+          duration={0.8}
           ease="power3.out"
-          disappearEase="power3.in"
-          initialOpacity={0.2}
+          initialOpacity={0}
           animateOpacity
-          scale={1.1}
-          threshold={0.2}
-          delay={0.3}
+          scale={1}
+          threshold={0.1}
+          delay={0.1}
         >
           <ContainerScroll
             titleComponent={
               <div className="text-center space-y-4 mb-10">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white flex flex-wrap items-center justify-center gap-4 uppercase tracking-wide">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white flex flex-wrap items-center justify-center gap-4 tracking-wide">
                   <ContainerTextFlip
                     words={["Hello!", "नमस्ते","ನಮಸ್ಕಾರ","வணக்கம்","こんにちは","నమస్తే","Hola!","നമസ്കാരം","Bonjour!","你好"]}
                     interval={2500}
@@ -169,9 +169,9 @@ export default function HeroSection() {
                       {/* Stats Grid */}
                       <div className="grid grid-cols-2 gap-px w-full bg-white/10 border border-white/10">
                         {[
-                          { value: '200+', label: 'DSA Problems (LC+CF)', fullWidth: true },
-                          { value: '7+',   label: 'Projects' },
-                          { value: '1',    label: 'Internship' },
+                          { value: '400+', label: 'DSA Solved · CF 1248', fullWidth: true },
+                          { value: '10+',   label: 'Projects' },
+                          { value: '2',    label: 'Internships' },
                         ].map((stat) => (
                           <div
                             key={stat.label}
@@ -183,8 +183,8 @@ export default function HeroSection() {
                         ))}
                       </div>
 
-                      {/* Social Links */}
-                      <div className="flex gap-4 justify-center w-full flex-wrap">
+                      {/* Social Links Grid */}
+                      <div className="grid grid-cols-3 gap-px w-full bg-white/10 border border-white/10">
                         {displayedLinks.map((link) => {
                           const Icon = getIcon(link.icon || '');
                           const isEmail = link.icon?.toLowerCase() === 'email';
@@ -197,26 +197,25 @@ export default function HeroSection() {
                           };
                           const colorClass = brandColors[link.icon?.toLowerCase() || ''] || 'text-neutral-400';
                           
-                          const btnClass = "w-11 h-11 rounded-none border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white group relative bg-transparent hover:text-black hover:border-white shadow-sm hover:shadow-white/20 hover:-translate-y-1";
-                          const iconClass = cn("w-5 h-5 transition-colors group-hover:!text-black", colorClass);
+                          const boxClass = "flex flex-col items-center justify-center bg-zinc-950 px-2 py-3.5 transition-all duration-300 hover:bg-zinc-900 group cursor-pointer relative text-center";
+                          const iconClass = cn("w-5 h-5 mb-1.5 transition-transform duration-300 group-hover:scale-110", colorClass);
 
                           if (isEmail) {
                             return (
                               <button
                                 key={link.label}
                                 onClick={() => handleEmailClick(link.href)}
-                                className={btnClass}
+                                className={boxClass}
                                 aria-label={link.label}
+                                type="button"
                               >
                                 <Icon className={iconClass} />
-                                
-                                {/* Tooltip */}
-                                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1 bg-white text-black text-xs font-medium uppercase tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
-                                  {copiedEmail ? 'Copied!' : 'Copy email'}
-                                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
-                                    <div className="border-4 border-transparent border-t-white" />
-                                  </div>
-                                </div>
+                                <span className={cn(
+                                  "text-[10px] sm:text-xs uppercase tracking-widest font-medium text-center leading-tight transition-colors",
+                                  copiedEmail ? "text-emerald-400" : "text-neutral-500 group-hover:text-white"
+                                )}>
+                                  {copiedEmail ? 'Copied!' : link.label}
+                                </span>
                               </button>
                             );
                           }
@@ -227,10 +226,13 @@ export default function HeroSection() {
                               href={link.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className={btnClass}
+                              className={boxClass}
                               aria-label={link.label}
                             >
                               <Icon className={iconClass} />
+                              <span className="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-500 group-hover:text-white font-medium text-center leading-tight transition-colors">
+                                {link.label}
+                              </span>
                             </a>
                           );
                         })}
@@ -243,30 +245,49 @@ export default function HeroSection() {
                       {/* Row 1: Name and CTA */}
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-white/10">
                         <div className="space-y-2">
-                          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-tight uppercase tracking-wide">
+                          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-tight tracking-wide">
                             Pushpendra S. Parihar
                           </h2>
-                          <p className="text-sm uppercase tracking-widest text-neutral-500">
-                            Full-Stack Developer
+                          <p className="text-xs sm:text-sm uppercase tracking-widest text-neutral-400 font-medium">
+                            Software Developer &amp; AI Engineer
                           </p>
                         </div>
                         
-                        {/* Resume CTA */}
-                        <a
-                          href="https://drive.google.com/file/d/150Zo0NjlUTuDkr9Zfjw7Me4tOaHqJDZ8/view?usp=drive_link"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-3 px-6 py-3 border border-white/20 hover:bg-white text-white hover:text-black text-xs font-semibold uppercase tracking-widest rounded-none transition-all flex-shrink-0 group"
-                        >
-                          <FaFileAlt className="w-4 h-4 text-[#10B981] group-hover:!text-black transition-colors" />
-                          <span>Resume</span>
-                        </a>
+                        {/* Action CTAs */}
+                        <div className="flex items-center gap-3 flex-wrap sm:flex-nowrap flex-shrink-0">
+                          {/* Get in Touch CTA */}
+                          <a
+                            href="#contact"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              const contactEl = document.getElementById('contact');
+                              if (contactEl) {
+                                contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                              }
+                            }}
+                            className="inline-flex items-center justify-center gap-2.5 px-5 py-3 bg-white text-black hover:bg-neutral-200 border border-white text-xs font-semibold uppercase tracking-widest rounded-none transition-all flex-shrink-0 group cursor-pointer shadow-sm hover:shadow-white/20"
+                          >
+                            <FaPaperPlane className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            <span>Get in Touch</span>
+                          </a>
+
+                          {/* Resume CTA */}
+                          <a
+                            href="https://drive.google.com/file/d/17jnorZFrzS85Ntjyana2xOohRdzNbINC/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2.5 px-5 py-3 border border-white/20 hover:bg-white text-white hover:text-black text-xs font-semibold uppercase tracking-widest rounded-none transition-all flex-shrink-0 group"
+                          >
+                            <FaFileAlt className="w-3.5 h-3.5 text-[#10B981] group-hover:!text-black transition-colors" />
+                            <span>Resume</span>
+                          </a>
+                        </div>
                       </div>
 
-                      {/* Row 2: Intro */}
+                      {/* Row 2: Intro Summary */}
                       <div className="bg-transparent py-2">
-                        <p className={cn(typography.body, 'text-md md:text-xl leading-relaxed text-left text-neutral-400')}>
-                          I'm a <span className="text-white font-medium">Full-stack Developer</span> passionate about building <span className="text-white font-medium">impactful, user-centric web applications</span>. I craft elegant solutions to complex problems and bring ideas to life through code.
+                        <p className={cn(typography.body, 'text-base sm:text-lg md:text-xl leading-relaxed text-left text-neutral-300')}>
+                          I'm a <span className="text-white font-medium">Software Developer &amp; AI Engineer</span> specializing in <span className="text-white font-medium">distributed systems, intelligent AI applications</span>, and scalable web platforms. From architecting asynchronous worker queues and resilient backend APIs to engineering RAG workflows and autonomous agent pipelines, I build high-throughput production systems grounded in strong algorithmic problem solving.
                         </p>
                       </div>
 
@@ -280,13 +301,14 @@ export default function HeroSection() {
                               <PiGraduationCap className="w-5 h-5 text-neutral-500 flex-shrink-0" />
                               <span className="text-xs font-semibold tracking-widest text-neutral-500 uppercase">Education</span>
                             </div>
-                            <span className="text-xs font-semibold text-white bg-white/10 px-2 py-1 rounded-none uppercase tracking-widest border border-white/10">CGPA 8.1</span>
+                            <span className="text-xs font-semibold text-white bg-white/10 px-2 py-1 rounded-none uppercase tracking-widest border border-white/10">CGPA 8.0</span>
                           </div>
-                          <p className="text-lg font-semibold text-white leading-tight mb-2 tracking-wide uppercase">B.Tech — CS & AI</p>
-                          <p className="text-sm text-neutral-500 mb-4 uppercase tracking-widest">2024 – 2028</p>
+                          <p className="text-lg font-semibold text-white leading-tight mb-1 tracking-wide uppercase">B.Tech — CS &amp; AI</p>
+                          <p className="text-xs text-neutral-400 mb-3 tracking-wider uppercase">Newton School of Technology · RU</p>
+                          <p className="text-xs text-neutral-500 mb-4 uppercase tracking-widest">2024 – 2028</p>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-none bg-white animate-pulse flex-shrink-0" />
-                            <span className="text-xs text-neutral-400 uppercase tracking-widest">Currently enrolled</span>
+                            <span className="text-xs text-neutral-300 uppercase tracking-widest">Currently enrolled</span>
                           </div>
                         </div>
 
@@ -302,9 +324,12 @@ export default function HeroSection() {
                             </div>
                             <span className="text-xs font-semibold text-white bg-white/10 px-2 py-1 rounded-none uppercase tracking-widest border border-white/10">Remote</span>
                           </div>
-                          <p className="text-lg font-semibold text-white leading-tight mb-2 tracking-wide uppercase">SDE Intern — Gamearena</p>
-                          <p className="text-sm text-neutral-500 mb-3 uppercase tracking-widest">Sep – Dec 2025</p>
-                          <p className="text-xs text-neutral-400 leading-relaxed uppercase tracking-widest">Incubated at IIM Bangalore · React · JS · Agile</p>
+                          <p className="text-lg font-semibold text-white leading-tight mb-1 tracking-wide uppercase">SDE Intern — XpressDM</p>
+                          <p className="text-xs text-neutral-400 mb-2 uppercase tracking-wider">B2B Marketing Automation Platform</p>
+                          <p className="text-xs text-neutral-500 mb-3 uppercase tracking-widest">Jun – Sep 2026 · Python &amp; FastAPI</p>
+                          <div className="border-t border-white/5 pt-3">
+                            <p className="text-xs text-neutral-400 uppercase tracking-widest">Also: SDE Intern @ Gamearena · Sep – Dec 2025</p>
+                          </div>
                         </div>
                       </div>
 
@@ -323,7 +348,7 @@ export default function HeroSection() {
                                   className="w-4 h-4 transition-transform group-hover:scale-110"
                                   style={{ color: tech.color }}
                                 />
-                                <span className="text-xs tracking-widest uppercase text-neutral-400 group-hover:text-white transition-colors font-medium">
+                                <span className="text-xs tracking-widest uppercase text-neutral-300 group-hover:text-white transition-colors font-medium">
                                   {tech.name}
                                 </span>
                               </div>
