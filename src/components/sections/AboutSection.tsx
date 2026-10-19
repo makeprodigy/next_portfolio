@@ -46,7 +46,7 @@ export default function AboutSection() {
   };
 
   return (
-    <AuroraBackground id="about" className="py-20 bg-zinc-950 dark:bg-zinc-950 -mt-[12.5rem] relative overflow-hidden">
+    <AuroraBackground id="about" className="py-20 md:py-28 bg-zinc-950 dark:bg-zinc-950 relative overflow-hidden">
 
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -67,13 +67,13 @@ export default function AboutSection() {
             </h2>
             <div className="space-y-8 leading-snug">
               <div className="space-y-6 md:space-y-8">
-                <p className="text-lg md:text-xl lg:text-[22px] leading-relaxed text-neutral-300 font-light tracking-wide">
+                <p className="text-lg md:text-xl lg:text-[22px] leading-relaxed text-neutral-200 font-normal tracking-normal">
                   I'm a curiosity-driven problem solver who finds genuine joy in untangling complex challenges—for me, the process is just as rewarding as crossing the finish line.
                 </p>
-                <p className="text-lg md:text-xl lg:text-[22px] leading-relaxed text-neutral-300 font-light tracking-wide">
+                <p className="text-lg md:text-xl lg:text-[22px] leading-relaxed text-neutral-200 font-normal tracking-normal">
                   I hold my work to a high standard, whether that means architecting clean, maintainable code or ensuring the final product makes intuitive sense to its users. I thrive both independently and in teams, and I'm always the person asking 'but why does it work this way?' before accepting the status quo.
                 </p>
-                <p className="text-lg md:text-xl lg:text-[22px] leading-relaxed text-neutral-300 font-light tracking-wide">
+                <p className="text-lg md:text-xl lg:text-[22px] leading-relaxed text-neutral-200 font-normal tracking-normal">
                   I'm constantly learning—not out of obligation, but because stagnation genuinely bothers me. Every new project is an opportunity to dive deeper and build something better.
                 </p>
               </div>
@@ -187,7 +187,7 @@ export default function AboutSection() {
                   
                   {/* Resume CTA */}
                   <a
-                    href="https://drive.google.com/file/d/150Zo0NjlUTuDkr9Zfjw7Me4tOaHqJDZ8/view?usp=drive_link"
+                    href="https://drive.google.com/file/d/17jnorZFrzS85Ntjyana2xOohRdzNbINC/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-3 rounded-none border border-white/10 transition-all duration-300 hover:bg-white hover:text-black group bg-zinc-950 px-4"
@@ -220,27 +220,27 @@ export default function AboutSection() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x divide-white/10">
               <div className="text-center flex flex-col items-center justify-center px-4 group">
                 <div className="text-5xl md:text-6xl font-semibold mb-3 text-white">
-                  <CountUp to={200} duration={2.5} />+
+                  <CountUp to={400} duration={2.5} />+
                 </div>
-                <div className="text-xs text-neutral-500 uppercase tracking-widest font-medium">Problems Solved (LC & CF)</div>
+                <div className="text-xs text-neutral-400 uppercase tracking-widest font-medium">Problems Solved (LC & CF)</div>
               </div>
               <div className="text-center flex flex-col items-center justify-center px-4 group">
                 <div className="text-5xl md:text-6xl font-semibold mb-3 text-white">
                   <CountUp to={1248} duration={2.5} />
                 </div>
-                <div className="text-xs text-neutral-500 uppercase tracking-widest font-medium">Max Rating (Codeforces)</div>
+                <div className="text-xs text-neutral-400 uppercase tracking-widest font-medium">Max Rating (Codeforces)</div>
               </div>
               <div className="text-center flex flex-col items-center justify-center px-4 group">
                 <div className="text-5xl md:text-6xl font-semibold mb-3 text-white">
-                  <CountUp to={7} duration={2} />+
+                  <CountUp to={10} duration={2} />+
                 </div>
-                <div className="text-xs text-neutral-500 uppercase tracking-widest font-medium">Projects</div>
+                <div className="text-xs text-neutral-400 uppercase tracking-widest font-medium">Projects</div>
               </div>
               <div className="text-center flex flex-col items-center justify-center px-4 group">
                 <div className="text-5xl md:text-6xl font-semibold mb-3 text-white">
-                  <CountUp to={1} duration={1.5} />
+                  <CountUp to={2} duration={1.5} />
                 </div>
-                <div className="text-xs text-neutral-500 uppercase tracking-widest font-medium">Internship</div>
+                <div className="text-xs text-neutral-400 uppercase tracking-widest font-medium">Internships</div>
               </div>
             </div>  
           </div>
