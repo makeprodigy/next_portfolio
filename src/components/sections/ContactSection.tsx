@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import AnimatedContent from '@/components/ui/AnimatedContent';
+import { motion } from 'motion/react';
 import { typography } from '@/lib/typography';
 import { cn } from '@/lib/utils';
 import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaLink, FaArrowRight, FaCheck } from 'react-icons/fa';
@@ -20,7 +20,7 @@ const getIcon = (label: string) => {
 export default function ContactSection() {
   const emailLink = socialLinks.find(s => s.label.toLowerCase() === 'email')?.href || 'mailto:payneparihar13@gmail.com';
   
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -36,7 +36,7 @@ export default function ContactSection() {
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         setStatus('error');
@@ -53,23 +53,18 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-32 bg-zinc-950 relative overflow-hidden">
+    <section id="contact" className="py-24 bg-zinc-950 relative overflow-hidden">
       {/* Sharp grid background lines instead of a blurred orb */}
       <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)', backgroundSize: '4rem 4rem' }} />
       
-      <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-20">
-        <AnimatedContent
-          distance={40}
-          direction="vertical"
-          reverse={false}
-          duration={0.8}
-          ease="power3.out"
-          initialOpacity={0}
-          animateOpacity
-          threshold={0.1}
-          delay={0.1}
+      <div className="container mx-auto px-4 md:px-8 max-w-7xl lg:max-w-[1360px] relative z-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[420px_1fr] gap-12 lg:gap-16 items-start">
             
             {/* Left Column: Heading and Info */}
             <div className="flex flex-col justify-between h-full">
@@ -121,8 +116,8 @@ export default function ContactSection() {
               <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-white/40" />
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-white/40" />
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-8">
                   {/* Name Input */}
                   <div className="relative group">
                     <input
@@ -163,9 +158,29 @@ export default function ContactSection() {
                     </label>
                   </div>
                 </div>
+
+                {/* Subject Input */}
+                <div className="relative group">
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    placeholder="Subject"
+                    className="w-full bg-transparent border-b border-white/20 py-3 text-white placeholder-transparent focus:outline-none focus:border-white transition-colors peer rounded-none [&:-webkit-autofill]:[-webkit-box-shadow:0_0_0_30px_#09090b_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
+                  />
+                  <label
+                    htmlFor="subject"
+                    className="absolute left-0 -top-5 text-xs text-neutral-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-5 peer-focus:text-xs peer-focus:text-white uppercase tracking-widest cursor-text"
+                  >
+                    Subject
+                  </label>
+                </div>
                 
                 {/* Message Input */}
-                <div className="relative group mt-2">
+                <div className="relative group mt-1">
                   <textarea
                     id="message"
                     name="message"
@@ -188,18 +203,18 @@ export default function ContactSection() {
                   type="submit"
                   disabled={status === 'loading' || status === 'success'}
                   className={cn(
-                    "mt-4 inline-flex items-center justify-between w-full px-6 py-4 text-sm tracking-widest uppercase font-medium transition-all duration-300 border rounded-none group",
-                    status === 'idle' ? "bg-transparent text-white border-white/30 hover:bg-white hover:text-black" : "",
-                    status === 'loading' ? "bg-transparent border-neutral-600 text-neutral-500 cursor-not-allowed" : "",
+                    "mt-2 inline-flex items-center justify-between w-full px-6 py-4 text-sm tracking-widest uppercase font-medium transition-all duration-300 border rounded-none group",
+                    status === 'idle' ? "bg-transparent text-white border-white/30 hover:bg-white hover:text-black cursor-pointer" : "",
+                    status === 'loading' ? "bg-transparent border-neutral-600 text-neutral-400 cursor-wait" : "",
                     status === 'success' ? "bg-white text-black border-white" : "",
-                    status === 'error' ? "bg-transparent border-red-500 text-red-500 hover:bg-red-500 hover:text-white" : ""
+                    status === 'error' ? "bg-transparent border-red-500 text-red-400 hover:bg-red-500 hover:text-white" : ""
                   )}
                 >
                   <span className="flex-1 text-left">
-                    {status === 'idle' && "Adding Functionality Soon"}
-                    {status === 'loading' && "Adding Functionality Soon..."}
-                    {status === 'success' && "Adding Functionality Soon"}
-                    {status === 'error' && "Failed. Try Again"}
+                    {status === 'idle' && "Send Message"}
+                    {status === 'loading' && "Sending Message..."}
+                    {status === 'success' && "Message Sent Successfully!"}
+                    {status === 'error' && "Failed to Send. Try Again"}
                   </span>
                   
                   <span className="flex items-center justify-center w-6 h-6">
@@ -212,7 +227,7 @@ export default function ContactSection() {
             </div>
             
           </div>
-        </AnimatedContent>
+        </motion.div>
       </div>
     </section>
   );
