@@ -19,8 +19,8 @@ const secondaryFont = Hanuman({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "My portfolio website",
+  title: "Pushpendra S. Parihar | Software Developer & AI Engineer",
+  description: "AI and Full-Stack Software Engineer specializing in distributed systems, intelligent AI applications, and scalable web platforms.",
 };
 
 export default function RootLayout({
