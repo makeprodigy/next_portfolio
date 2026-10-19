@@ -1,264 +1,223 @@
 "use client";
 
-import React, { useEffect, useId, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { useOutsideClick } from "@/hooks/use-outside-click";
+import React from "react";
+import AnimatedContent from "@/components/ui/AnimatedContent";
 import { typography } from "@/lib/typography";
 import { cn } from "@/lib/utils";
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaNetworkWired,
+  FaBrain,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+import type { IconType } from "react-icons";
+import {
+  SiNextdotjs,
+  SiTypescript,
+  SiMongodb,
+  SiRedis,
+  SiWebpack,
+  SiDocker,
+  SiTailwindcss,
+  SiReact,
+} from "react-icons/si";
 
-const CloseIcon = () => {
-  return (
-    <motion.svg
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.05,
-        },
-      }}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4 text-white"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M18 6l-12 12" />
-      <path d="M6 6l12 12" />
-    </motion.svg>
-  );
+// ─── Project Data Types ───────────────────────────────────────────────────────
+
+type TechTag = {
+  label: string;
+  icon?: IconType;
+  color?: string;
 };
 
-// Project categories with their projects
-const projectCategories = [
+type Project = {
+  id: string;
+  title: string;
+  tagline: string;
+  date: string;
+  summary: string;
+  githubLink: string;
+  demoLink: string;
+  tech: TechTag[];
+};
+
+const projects: Project[] = [
   {
-    id: 1,
-    number: "1",
-    title: "Frontend & UI",
-    location: "React & Design",
-    projects: [
-      {
-        title: "OpenSearch Frontend",
-        description: "Modern React UI for discovering GitHub repositories",
-        src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80",
-        githubLink: "https://github.com/yourusername/opensearch-frontend",
-        stack: ["React", "Vite", "TailwindCSS", "Radix UI", "React Router"],
-        detailedDescription: "A beautiful and responsive frontend application that helps developers find welcoming GitHub repositories. Features advanced filtering, real-time search, health score visualization, and a modern UI built with TailwindCSS and shadcn-inspired components. Includes intelligent repository ranking and seamless navigation.",
-      },
+    id: "flux",
+    title: "Flux",
+    tagline: "AI-Powered Assessment Platform",
+    date: "February 2026",
+    summary:
+      "Engineered a distributed AI assessment platform with BullMQ, Redis, and WebSockets enabling concurrent document-generation workloads through scalable worker pools and real-time progress streaming.",
+    githubLink: "https://github.com/makeprodigy/flux",
+    demoLink: "https://flux-assignments.vercel.app/",
+    tech: [
+      { label: "Next.js 15", icon: SiNextdotjs, color: "#FFFFFF" },
+      { label: "TypeScript", icon: SiTypescript, color: "#60A5FA" },
+      { label: "MongoDB Atlas", icon: SiMongodb, color: "#4ADE80" },
+      { label: "Redis", icon: SiRedis, color: "#F87171" },
+      { label: "BullMQ", icon: SiWebpack, color: "#38BDF8" },
+      { label: "WebSockets", icon: FaNetworkWired, color: "#C084FC" },
+      { label: "Gemini API", icon: FaBrain, color: "#818CF8" },
+      { label: "Docker", icon: SiDocker, color: "#38BDF8" },
+      { label: "Tailwind CSS", icon: SiTailwindcss, color: "#22D3EE" },
     ],
   },
   {
-    id: 2,
-    number: "2",
-    title: "Backend & APIs",
-    location: "Node.js & Servers",
-    projects: [
-      {
-        title: "OpenSearch Backend",
-        description: "RESTful API with intelligent repository ranking",
-        src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&q=80",
-        githubLink: "https://github.com/yourusername/opensearch-backend",
-        stack: ["Node.js", "Express", "Prisma", "MySQL", "JWT"],
-        detailedDescription: "Robust backend API featuring custom health score algorithm (0-100 scale) for ranking GitHub repositories. Implements JWT authentication, background workers for data refresh, ETag caching, rate limiting, and automatic TTL-based cleanup. Includes comprehensive GitHub API integration with intelligent caching to optimize API usage and maintain database efficiency.",
-      },
-    ],
-  },
-  {
-    id: 3,
-    number: "3",
-    title: "Data & AI",
-    location: "Machine Learning",
-    projects: [
-      {
-        title: "AI Project Coming Soon",
-        description: "Intelligent data processing platform",
-        src: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=500&q=80",
-        githubLink: "https://github.com/username/ai-project",
-        stack: ["Python", "TensorFlow", "NLP", "FastAPI", "React"],
-        detailedDescription: "An advanced AI-powered platform leveraging machine learning to provide intelligent insights. Features natural language processing, predictive analytics, and automated decision-making capabilities.",
-      },
-    ],
-  },
-  {
-    id: 4,
-    number: "4",
-    title: "Tools & Technologies",
-    location: "Developer Tools",
-    projects: [
-      {
-        title: "DevTools Coming Soon",
-        description: "Developer productivity toolkit",
-        src: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&q=80",
-        githubLink: "https://github.com/username/devtools",
-        stack: ["Next.js", "TypeScript", "Tailwind", "Framer Motion", "MDX"],
-        detailedDescription: "A comprehensive developer toolkit designed to streamline workflows and boost productivity. Features code generation, automated testing, and seamless integration with popular development environments.",
-      },
+    id: "reliefops",
+    title: "Relief Ops",
+    tagline: "Crisis Relief Coordination Platform",
+    date: "June 2026",
+    summary:
+      "Architected an event-driven disaster response system featuring asynchronous allocation services, geospatial resource matching, and real-time operations dashboards for coordinating volunteers and relief resources.",
+    githubLink: "https://github.com/MouliSrivastava05/ReliefOps",
+    demoLink: "https://relief-ops-two.vercel.app/",
+    tech: [
+      { label: "Next.js 15", icon: SiNextdotjs, color: "#FFFFFF" },
+      { label: "TypeScript", icon: SiTypescript, color: "#60A5FA" },
+      { label: "MongoDB", icon: SiMongodb, color: "#4ADE80" },
+      { label: "Redis", icon: SiRedis, color: "#F87171" },
+      { label: "WebSockets", icon: FaNetworkWired, color: "#C084FC" },
+      { label: "Redux", icon: SiReact, color: "#61DAFB" },
+      { label: "Google Maps", icon: FaMapMarkerAlt, color: "#F87171" },
+      { label: "Tailwind CSS", icon: SiTailwindcss, color: "#22D3EE" },
     ],
   },
 ];
 
-type Project = {
-  title: string;
-  description: string;
-  src: string;
-  githubLink: string;
-  stack: string[];
-  detailedDescription: string;
-};
+// ─── Project Card Component ───────────────────────────────────────────────────
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  return (
+    <AnimatedContent
+      distance={40}
+      direction="vertical"
+      reverse={false}
+      duration={0.8}
+      ease="power3.out"
+      initialOpacity={0}
+      animateOpacity
+      threshold={0.1}
+      delay={0.15 * index}
+    >
+      <div className="relative group flex flex-col justify-between h-full border border-white/10 hover:border-white/25 bg-zinc-950 p-8 sm:p-10 md:p-12 transition-all duration-300">
+        {/* Sharp corner accents */}
+        <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-white/0 group-hover:border-white/50 transition-colors duration-500" />
+        <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-white/0 group-hover:border-white/50 transition-colors duration-500" />
+        <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-white/0 group-hover:border-white/50 transition-colors duration-500" />
+        <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-white/0 group-hover:border-white/50 transition-colors duration-500" />
+
+        {/* ── Top Header: Meta, Title, Tagline & Summary ──────────────────── */}
+        <div>
+          <div className="flex items-center justify-between gap-3 mb-6">
+            <span className="text-xs sm:text-sm font-semibold text-white/90 bg-white/5 border border-white/10 px-3.5 py-1.5 uppercase tracking-wider">
+              {project.date}
+            </span>
+            <span className="text-xs sm:text-sm font-medium text-neutral-500 uppercase tracking-widest">
+              0{index + 1}
+            </span>
+          </div>
+
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white tracking-wide uppercase leading-tight mb-2">
+            {project.title}
+          </h3>
+          <p className="text-sm sm:text-base md:text-lg text-neutral-400 font-medium uppercase tracking-wider mb-6">
+            {project.tagline}
+          </p>
+
+          <p className="text-base sm:text-lg lg:text-xl text-neutral-300 leading-relaxed font-normal mb-8">
+            {project.summary}
+          </p>
+        </div>
+
+        {/* ── Bottom Section: Tech Stack & Action Links ────────────────────── */}
+        <div className="mt-auto">
+          {/* Tech stack */}
+          <div className="pt-6 border-t border-white/5 mb-8">
+            <span className="text-xs uppercase tracking-widest text-neutral-500 font-medium block mb-3.5">
+              Technologies
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((tech) => {
+                const Icon = tech.icon;
+                return (
+                  <span
+                    key={tech.label}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/[0.03] border border-white/10 hover:border-white/25 text-xs sm:text-sm text-neutral-200 font-medium transition-colors cursor-default"
+                  >
+                    {Icon && (
+                      <Icon
+                        className="w-3.5 h-3.5 shrink-0"
+                        style={{ color: tech.color || "#FFFFFF" }}
+                      />
+                    )}
+                    <span>{tech.label}</span>
+                  </span>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Action links */}
+          <div className="flex items-center gap-3 pt-6 border-t border-white/10">
+            <a
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-2.5 py-3 px-4 border border-white/15 hover:border-white/40 hover:bg-white hover:text-black text-white text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all duration-300"
+            >
+              <FaGithub className="w-4 h-4" />
+              <span>GitHub</span>
+            </a>
+            <a
+              href={project.demoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-2.5 py-3 px-4 border border-white/15 hover:border-white/40 hover:bg-white hover:text-black text-white text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all duration-300"
+            >
+              <FaExternalLinkAlt className="w-3 h-3" />
+              <span>Live Demo</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </AnimatedContent>
+  );
+}
+
+// ─── Section ──────────────────────────────────────────────────────────────────
 
 export default function ProjectsSection() {
-  const [active, setActive] = useState<Project | null>(null);
-  const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
-  const ref = useRef<HTMLDivElement>(null);
-  const id = useId();
-
-  useEffect(() => {
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setActive(null);
-      }
-    }
-
-    if (active) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [active]);
-
-  useOutsideClick(ref, () => setActive(null));
-
   return (
-    <section id="projects" className="py-20 bg-zinc-950 min-h-screen">
+    <section id="projects" className="py-24 bg-zinc-950">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-        <h2 className={cn(typography.sectionTitle, "mb-12")}>
-          PROJECTS
-        </h2>
+        {/* Section heading */}
+        <AnimatedContent
+          distance={40}
+          direction="vertical"
+          reverse={false}
+          duration={0.8}
+          ease="power3.out"
+          initialOpacity={0}
+          animateOpacity
+          threshold={0.1}
+          delay={0}
+        >
+          <div className="mb-14">
+            <h2 className={cn(typography.sectionTitle, "mb-4")}>PROJECTS</h2>
+            <p className={cn(typography.body)}>
+              Featured builds spanning distributed AI engines, crisis response
+              systems, and high-performance web applications.
+            </p>
+          </div>
+        </AnimatedContent>
 
-        {/* Expandable Modal */}
-        <AnimatePresence>
-          {active && (
-            <>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-zinc-950/80 h-full w-full z-[100]"
-              />
-              <div className="fixed inset-0 grid place-items-center z-[101]">
-                <motion.button
-                  key={`button-${active.title}-${id}`}
-                  layout
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, transition: { duration: 0.05 } }}
-                  className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-neutral-800 rounded-none h-6 w-6 z-[102]"
-                  onClick={() => setActive(null)}
-                >
-                  <CloseIcon />
-                </motion.button>
-                <motion.div
-                  layoutId={`card-${active.title}-${id}`}
-                  ref={ref}
-                  className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-neutral-900 rounded-none overflow-hidden border border-neutral-800"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                >
-                  <motion.div layoutId={`image-${active.title}-${id}`}>
-                    <img
-                      width={500}
-                      height={320}
-                      src={active.src}
-                      alt={active.title}
-                      className="w-full h-80 lg:h-80 rounded-none object-cover object-center"
-                    />
-                  </motion.div>
-
-                  <div>
-                    <div className="flex justify-between items-start p-3">
-                      <div className="flex-1 pr-2">
-                        <motion.h3
-                          layoutId={`title-${active.title}-${id}`}
-                          className={typography.modalTitle}
-                        >
-                          {active.title}
-                        </motion.h3>
-                        <motion.p
-                          layoutId={`description-${active.description}-${id}`}
-                          className={typography.modalDescription}
-                        >
-                          {active.description}
-                        </motion.p>
-                      </div>
-
-                      <motion.a
-                        href={active.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={cn("px-4 py-3 rounded-none bg-neutral-800 hover:bg-neutral-700 text-white flex items-center gap-2 border border-neutral-700 shrink-0", typography.button)}
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                        </svg>
-                        GitHub
-                      </motion.a>
-                    </div>
-                    <div className="pt-3 relative px-3">
-                      <motion.div
-                        layout
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className={cn(typography.modalBody, "h-40 md:h-fit pb-8 flex flex-col items-start gap-3 overflow-auto leading-snug [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]")}
-                      >
-                        <div className="space-y-3 w-full">
-                          <div>
-                            <h4 className={cn(typography.modalSubheading, "mb-1.5")}>Tech Stack</h4>
-                            <div className="flex flex-wrap gap-1.5">
-                              {active.stack.map((tech, index) => (
-                                <span
-                                  key={index}
-                                  className={cn("px-3 py-1 bg-neutral-800 border border-neutral-700 rounded-none", typography.tag)}
-                                >
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                          <div>
-                            <h4 className={cn(typography.modalSubheading, "mb-1.5")}>Description</h4>
-                            <p className={cn(typography.modalBody, 'leading-snug')}>{active.detailedDescription}</p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </>
-          )}
-        </AnimatePresence>
-
-        {/* Updating Soon Placeholder */}
-        <div className="flex items-center justify-center py-20 border border-white/10 bg-neutral-950/60 shadow-2xl">
-          <p className="text-xl md:text-2xl font-light text-neutral-400 tracking-[0.2em] uppercase">
-            Updating Soon
-          </p>
+        {/* 2-column Wide Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          {projects.map((project, idx) => (
+            <ProjectCard key={project.id} project={project} index={idx} />
+          ))}
         </div>
       </div>
     </section>
