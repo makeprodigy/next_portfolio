@@ -1,202 +1,329 @@
 "use client";
 
-import { CardSpotlight } from "@/components/ui/card-spotlight";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import React from "react";
+import AnimatedContent from "@/components/ui/AnimatedContent";
 import { typography } from "@/lib/typography";
 import { cn } from "@/lib/utils";
+import type { IconType } from "react-icons";
+import {
+  FaExternalLinkAlt,
+  FaFileAlt,
+  FaPython,
+  FaGitAlt,
+  FaDatabase,
+  FaUsers,
+  FaLaptopCode,
+} from "react-icons/fa";
+import {
+  SiFastapi,
+  SiReact,
+  SiTypescript,
+  SiNextdotjs,
+  SiDocker,
+  SiPostgresql,
+  SiSqlalchemy,
+  SiRazorpay,
+  SiNgrok,
+  SiRedux,
+  SiJavascript,
+  SiGooglegemini,
+} from "react-icons/si";
+
+// ─── Data Types ───────────────────────────────────────────────────────────────
+
+type TechItem = {
+  label: string;
+  icon: IconType;
+  color: string;
+};
 
 interface WorkExperience {
   id: number;
   company: string;
-  logo: string;
   designation: string;
   duration: string;
   location: string;
-  type: string;
-  summary: string;
-  companyInfo?: string;
-  link?: string;
-  responsibilities: string[];
-  technologies?: string[];
+  companyInfo: string;
+  websiteUrl?: string;
+  letterUrl?: string;
+  points: {
+    text: string;
+    highlights: string[];
+  }[];
+  technologies: TechItem[];
 }
 
 const experiences: WorkExperience[] = [
   {
     id: 1,
-    company: "Gamearena",
-    logo: "/Gamearena text Logo.svg",
-    designation: "Software Development Intern",
-    duration: "Sep 2025 - Dec 2025",
+    company: "XpressDM",
+    designation: "SDE Intern",
+    duration: "Jun 2026 – Sep 2026",
     location: "Remote",
-    type: "Internship",
-    link: "https://gamearena.tech/",
-    summary: "Led a UI/UX revamp of the platform, improving usability and fixing cross-device responsiveness issues.",
-    companyInfo: "Early-stage startup incubated in IIM Bangalore",
-    responsibilities: [
-      "Led a UI/UX revamp of the platform, improving usability and fixing cross-device responsiveness issues.",
-      "Developed and optimized responsive frontend components using React and JavaScript in a remote Agile environment.",
-      "Resolved key UI interaction and layout consistency problems across multiple screen resolutions.",
-      "Built scalable and visually polished interfaces using Aceternity UI for a smoother user experience."
+    companyInfo: "B2B Marketing Automation Platform",
+    websiteUrl: "https://xpressdm.com/",
+    letterUrl:
+      "https://drive.google.com/file/d/1e22EmKApWMp5gHdW10LCZ_8wupplWsMA/view?usp=sharing",
+    points: [
+      {
+        text: "Optimized the core automation engine by 30% by refining caching layers and asynchronous worker queues, cutting redundant API and database calls by ~35% and significantly reducing response latency under high-volume engagement traffic.",
+        highlights: ["30%", "~35%"],
+      },
+      {
+        text: "Built and shipped 10+ full-stack features across React/Next.js and FastAPI, including SQLAlchemy/Alembic schema migrations and contributions to Razorpay payment integration.",
+        highlights: ["10+ full-stack features"],
+      },
+      {
+        text: "Used Docker and ngrok for containerized development and webhook testing in local environments.",
+        highlights: ["Docker", "ngrok"],
+      },
     ],
-    technologies: ["React", "JavaScript", "Aceternity UI", "Agile", "Slack", "Go"]
-  }
+    technologies: [
+      { label: "Python", icon: FaPython, color: "#38BDF8" },
+      { label: "FastAPI", icon: SiFastapi, color: "#2DD4BF" },
+      { label: "React", icon: SiReact, color: "#61DAFB" },
+      { label: "TypeScript", icon: SiTypescript, color: "#60A5FA" },
+      { label: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
+      { label: "Docker", icon: SiDocker, color: "#38BDF8" },
+      { label: "PostgreSQL", icon: SiPostgresql, color: "#60A5FA" },
+      { label: "SQLAlchemy", icon: SiSqlalchemy, color: "#F87171" },
+      { label: "Alembic", icon: FaDatabase, color: "#FB923C" },
+      { label: "Razorpay", icon: SiRazorpay, color: "#38BDF8" },
+      { label: "ngrok", icon: SiNgrok, color: "#FFFFFF" },
+      { label: "Git", icon: FaGitAlt, color: "#F87171" },
+    ],
+  },
+  {
+    id: 2,
+    company: "Gamearena",
+    designation: "SDE Intern",
+    duration: "Sep 2025 – Dec 2025",
+    location: "Remote",
+    companyInfo: "Incubated at IIM Bangalore",
+    websiteUrl: "https://gamearena.tech/",
+    points: [
+      {
+        text: "Led UI/UX revamp across 5 platform pages, building 15+ reusable React components and resolving cross-device responsiveness issues.",
+        highlights: ["5 platform pages", "15+ reusable React components"],
+      },
+      {
+        text: "Shipped frontend features in a remote Agile environment using AI-assisted development workflows (Cursor / Gemini).",
+        highlights: ["AI-assisted development workflows"],
+      },
+      {
+        text: "Collaborated asynchronously on a fast-paced Scrum team, maintaining high delivery cadence across sprints.",
+        highlights: ["Scrum team", "high delivery cadence"],
+      },
+    ],
+    technologies: [
+      { label: "React", icon: SiReact, color: "#61DAFB" },
+      { label: "Redux", icon: SiRedux, color: "#C084FC" },
+      { label: "JavaScript", icon: SiJavascript, color: "#FDE047" },
+      { label: "TypeScript", icon: SiTypescript, color: "#60A5FA" },
+      { label: "Agile / Scrum", icon: FaUsers, color: "#34D399" },
+      { label: "Cursor", icon: FaLaptopCode, color: "#A78BFA" },
+      { label: "Gemini", icon: SiGooglegemini, color: "#818CF8" },
+      { label: "Git", icon: FaGitAlt, color: "#F87171" },
+    ],
+  },
 ];
+
+// ─── Highlight Helper ─────────────────────────────────────────────────────────
+
+function HighlightedText({
+  text,
+  highlights,
+}: {
+  text: string;
+  highlights: string[];
+}) {
+  if (!highlights.length) return <span>{text}</span>;
+
+  const escaped = highlights.map((h) =>
+    h.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  );
+  const regex = new RegExp(`(${escaped.join("|")})`, "g");
+  const parts = text.split(regex);
+
+  return (
+    <span>
+      {parts.map((part, i) =>
+        highlights.includes(part) ? (
+          <span key={i} className="text-white font-medium">
+            {part}
+          </span>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </span>
+  );
+}
+
+// ─── Experience Card ──────────────────────────────────────────────────────────
+
+function ExperienceCard({
+  exp,
+  index,
+}: {
+  exp: WorkExperience;
+  index: number;
+}) {
+  return (
+    <AnimatedContent
+      distance={50}
+      direction="vertical"
+      reverse={false}
+      duration={0.85}
+      ease="power3.out"
+      initialOpacity={0}
+      animateOpacity
+      threshold={0.1}
+      delay={0.15 * index}
+    >
+      <div className="relative group border border-white/10 hover:border-white/25 bg-zinc-950 p-8 sm:p-10 md:p-12 transition-all duration-300">
+        {/* Sharp corner accents */}
+        <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-white/0 group-hover:border-white/50 transition-colors duration-500" />
+        <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-white/0 group-hover:border-white/50 transition-colors duration-500" />
+        <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-white/0 group-hover:border-white/50 transition-colors duration-500" />
+        <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-white/0 group-hover:border-white/50 transition-colors duration-500" />
+
+        {/* ── Top Header: Company, Designation & Meta ────────────────────── */}
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-6 border-b border-white/10">
+          <div>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white tracking-wide uppercase leading-tight">
+              {exp.company}
+            </h3>
+            <p className="text-base sm:text-lg md:text-xl text-neutral-300 font-normal mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span className="text-white font-medium">{exp.designation}</span>
+              <span className="text-neutral-600 hidden sm:inline">•</span>
+              <span className="text-neutral-400">{exp.companyInfo}</span>
+            </p>
+          </div>
+
+          {/* Badges and action links */}
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+            <span className="text-xs sm:text-sm font-semibold text-white bg-white/10 border border-white/10 px-3.5 py-1.5 uppercase tracking-wider">
+              {exp.duration}
+            </span>
+            <span className="text-xs sm:text-sm font-medium text-neutral-300 border border-white/10 px-3.5 py-1.5 uppercase tracking-wider">
+              {exp.location}
+            </span>
+            {exp.websiteUrl && (
+              <a
+                href={exp.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold border border-white/15 hover:border-white/40 hover:bg-white hover:text-black text-white px-3.5 py-1.5 uppercase tracking-wider transition-all duration-300"
+              >
+                <span>Website</span>
+                <FaExternalLinkAlt className="w-2.5 h-2.5" />
+              </a>
+            )}
+            {exp.letterUrl && (
+              <a
+                href={exp.letterUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold border border-white/15 hover:border-white/40 hover:bg-white hover:text-black text-white px-3.5 py-1.5 uppercase tracking-wider transition-all duration-300"
+              >
+                <span>Letter</span>
+                <FaFileAlt className="w-2.5 h-2.5 text-emerald-400 group-hover:text-black transition-colors" />
+              </a>
+            )}
+          </div>
+        </div>
+
+        {/* ── Main Layout: Responsibilities on left, 2-column wrapped Stack on right ── */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_340px] lg:grid-cols-[1fr_390px] gap-8 md:gap-8 lg:gap-10 items-start pt-8">
+          {/* Left Column: Responsibilities */}
+          <div>
+            <span className="text-xs uppercase tracking-widest text-neutral-400 font-medium block mb-4">
+              What I Did
+            </span>
+            <ul className="space-y-5">
+              {exp.points.map((pt, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-4 text-base md:text-lg lg:text-xl text-neutral-300 leading-relaxed font-normal"
+                >
+                  <span className="mt-2.5 w-1.5 h-1.5 rounded-none bg-white/60 shrink-0" />
+                  <div>
+                    <HighlightedText
+                      text={pt.text}
+                      highlights={pt.highlights}
+                    />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right Column: 2-column wrapped Tech Stack */}
+          <div className="md:border-l md:border-white/10 md:pl-8 lg:pl-10">
+            <span className="text-xs sm:text-sm uppercase tracking-widest text-neutral-400 font-semibold block mb-4">
+              Stack
+            </span>
+            <div className="grid grid-cols-2 gap-2.5">
+              {exp.technologies.map((tech) => {
+                const Icon = tech.icon;
+                return (
+                  <div
+                    key={tech.label}
+                    className="flex items-center gap-2.5 px-3.5 sm:px-4 py-2.5 sm:py-3 bg-white/[0.03] border border-white/10 hover:border-white/30 hover:bg-white/[0.06] transition-all text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-200 cursor-default"
+                  >
+                    <Icon
+                      className="w-4 h-4 sm:w-5 sm:h-5 shrink-0"
+                      style={{ color: tech.color }}
+                    />
+                    <span className="truncate">{tech.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </AnimatedContent>
+  );
+}
+
+// ─── Section ──────────────────────────────────────────────────────────────────
 
 export default function WorkExperienceSection() {
   return (
-    <section id="work-experience" className="py-24 relative bg-zinc-950 h-auto overflow-hidden">
-      {/* Elegant animated beams */}
-      <BackgroundBeams className="absolute inset-0 z-0 opacity-40" />
-      
-      <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
-        <h2 className={cn(typography.sectionTitle, "mb-10")}>
-          INTERNSHIP(S)
-        </h2>
-        
-        <div className="space-y-8">
-          {experiences.map((experience) => (
-            <CardSpotlight
-              key={experience.id}
-              className="relative flex flex-col lg:flex-row gap-8 lg:gap-10 p-6 md:p-8 rounded-none border border-white/10 bg-neutral-950/60 shadow-2xl overflow-hidden group"
-              radius={400}
-              color="#1e40af"
-            >
-              {/* Subtle background glow effect behind the logo area */}
-              <div className="absolute top-0 left-0 w-full lg:w-1/3 h-full bg-gradient-to-r from-blue-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <section id="work-experience" className="py-24 bg-zinc-950">
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+        {/* Section heading */}
+        <AnimatedContent
+          distance={40}
+          direction="vertical"
+          reverse={false}
+          duration={0.8}
+          ease="power3.out"
+          initialOpacity={0}
+          animateOpacity
+          threshold={0.1}
+          delay={0}
+        >
+          <div className="mb-14">
+            <h2 className={cn(typography.sectionTitle, "mb-4")}>
+              WORK EXPERIENCE
+            </h2>
+            <p className={cn(typography.body, "max-w-2xl")}>
+              Software engineering internships focused on distributed automation
+              engines, backend performance optimization, and responsive product interfaces.
+            </p>
+          </div>
+        </AnimatedContent>
 
-              {/* LEFT COLUMN - Branding & Meta */}
-              <div className="flex-shrink-0 w-full lg:w-1/3 flex flex-col space-y-6 z-10 relative">
-                {/* Logo Area */}
-                <div className="w-full max-w-[200px] h-24 bg-black/40 rounded-none border border-white/5 flex items-center justify-center p-4 backdrop-blur-sm shadow-inner">
-                  <img
-                    src={experience.logo}
-                    alt={`${experience.company} logo`}
-                    className="w-full h-full object-contain brightness-110 drop-shadow-lg"
-                  />
-                </div>
-                
-                {/* Company & Badges */}
-                <div>
-                  <h3 className={cn(typography.weCardTitle, "mb-2 tracking-tight")}>
-                    {experience.company}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className={cn("px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-none shadow-sm text-sm font-semibold")}>
-                      {experience.type}
-                    </span>
-                    {experience.companyInfo && (
-                      <span className="text-xs md:text-sm text-neutral-400 font-medium px-2 border-l-2 border-neutral-700">
-                        {experience.companyInfo}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                
-                {/* Role & Meta */}
-                <div className="space-y-4 pt-4 border-t border-white/5">
-                  <div>
-                    <p className={cn(typography.label, "mb-1 text-neutral-500")}>Role</p>
-                    <p className={cn(typography.weDesignation, "text-white")}>
-                      {experience.designation}
-                    </p>
-                  </div>
-                  
-                  <div className="space-y-2.5">
-                    <div className="flex items-center gap-3 text-neutral-400 group-hover:text-neutral-300 transition-colors">
-                      <div className="w-7 h-7 rounded-none bg-white/5 flex items-center justify-center border border-white/5">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <span className="font-medium text-sm">{experience.duration}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-neutral-400 group-hover:text-neutral-300 transition-colors">
-                      <div className="w-7 h-7 rounded-none bg-white/5 flex items-center justify-center border border-white/5">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                      </div>
-                      <span className="font-medium text-sm">{experience.location}</span>
-                    </div>
-                    {experience.link && (
-                      <div className="flex items-center gap-3 text-neutral-400 group-hover:text-neutral-300 transition-colors">
-                        <div className="w-7 h-7 rounded-none bg-white/5 flex items-center justify-center border border-white/5">
-                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                          </svg>
-                        </div>
-                        <a href={experience.link} target="_blank" rel="noopener noreferrer" className="font-medium text-sm hover:text-blue-400 hover:underline underline-offset-4 transition-all flex items-center gap-1.5">
-                          Website
-                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* RIGHT COLUMN - Content */}
-              <div className="flex-1 flex flex-col space-y-6 z-10 relative">
-                {/* Overview */}
-                <div>
-                  <h4 className={cn(typography.weSubsectionTitle, "mb-2 text-white flex items-center gap-2")}>
-                    <div className="w-1.5 h-5 bg-blue-500 rounded-none" />
-                    Overview
-                  </h4>
-                  <p className={cn(typography.weBody, "text-neutral-400 leading-relaxed text-sm md:text-base")}>
-                    {experience.summary}
-                  </p>
-                </div>
-
-                {/* Key Responsibilities */}
-                <div>
-                  <h4 className={cn(typography.weSubsectionTitle, "mb-3 text-white flex items-center gap-2")}>
-                    <div className="w-1.5 h-5 bg-blue-500 rounded-none" />
-                    Key Responsibilities
-                  </h4>
-                  <ul className="space-y-2">
-                    {experience.responsibilities.map((responsibility, index) => (
-                      <li
-                        key={index}
-                        className={cn("flex items-start gap-3 group/item", typography.weBody)}
-                      >
-                        <div className="flex-shrink-0 w-1.5 h-1.5 rounded-none bg-blue-500/50 group-hover/item:bg-blue-400 mt-2 transition-colors shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
-                        <span className="text-neutral-300 leading-relaxed group-hover/item:text-white transition-colors text-sm md:text-base">
-                          {responsibility}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Tech Stack */}
-                {experience.technologies && experience.technologies.length > 0 && (
-                  <div className="pt-1">
-                    <h4 className={cn(typography.weSubsectionTitle, "mb-3 text-white flex items-center gap-2")}>
-                      <div className="w-1.5 h-5 bg-blue-500 rounded-none" />
-                      Tech Stack
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {experience.technologies.map((tech, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-none text-xs md:text-sm font-medium text-neutral-300 hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 cursor-default"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </CardSpotlight>
+        {/* Experience cards list */}
+        <div className="space-y-10">
+          {experiences.map((exp, idx) => (
+            <ExperienceCard key={exp.id} exp={exp} index={idx} />
           ))}
         </div>
       </div>
     </section>
   );
 }
-
