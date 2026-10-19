@@ -103,7 +103,28 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
       onEnter: () => tl.play()
     });
 
+    // Check if already in viewport or past trigger
+    if (st.progress > 0) {
+      tl.play();
+    }
+
+    // IntersectionObserver fallback for bottom-of-page or dynamically positioned elements
+    let observer: IntersectionObserver | null = null;
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
+            tl.play();
+            observer?.disconnect();
+          }
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(el);
+    }
+
     return () => {
+      observer?.disconnect();
       st.kill();
       tl.kill();
     };
