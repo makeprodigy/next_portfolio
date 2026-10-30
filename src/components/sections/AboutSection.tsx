@@ -226,7 +226,7 @@ export default function AboutSection() {
               </div>
               <div className="text-center flex flex-col items-center justify-center px-4 group">
                 <div className="text-5xl md:text-6xl font-semibold mb-3 text-white">
-                  <CountUp to={1248} duration={2.5} />
+                  <CountUp to={1564} duration={2.5} />
                 </div>
                 <div className="text-xs text-neutral-400 uppercase tracking-widest font-medium">Max Rating (Codeforces)</div>
               </div>

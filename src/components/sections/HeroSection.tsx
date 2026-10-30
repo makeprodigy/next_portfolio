@@ -169,7 +169,7 @@ export default function HeroSection() {
                       {/* Stats Grid */}
                       <div className="grid grid-cols-2 gap-px w-full bg-white/10 border border-white/10">
                         {[
-                          { value: '400+', label: 'DSA Solved · CF 1248', fullWidth: true },
+                          { value: '400+', label: 'DSA Solved · CF 1564', fullWidth: true },
                           { value: '10+',   label: 'Projects' },
                           { value: '2',    label: 'Internships' },
                         ].map((stat) => (
